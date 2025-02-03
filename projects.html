@@ -23,22 +23,23 @@
             <h1>PROJECTS</h1>
             <search>
                 <form action="./search/">
-                  <label for="project">Find Project</label>
-                  <input type="search" id="project" name="project">
-                  <datalist id="suggest-project">
+                    <label for="project">Find Project</label>
+                    <input type="text" id="project" name="project" list="suggest-project">
+                    <datalist id="suggest-project">
                     <optgroup label="Team Projects">
                         <option value="Web Application">Web Application</option>
                         <option value="Machine Learning">Machine Learning</option>
-                        <option value="AI: Probabiblistic">AI: Probabiblistic</option>
+                        <option value="AI: Probabilistic">AI: Probabilistic</option>
                     </optgroup>
                     <optgroup label="Individual Projects">
                         <option value="NFA-to-DFA Converter">NFA-to-DFA Converter</option>
                         <option value="Encode and Decode">Encode and Decode</option>
                     </optgroup>  
-                  </datalist>
-                  <button type="submit">Search</button>
+                    </datalist>
+                    <button type="submit">Search</button>
                 </form>
-              </search>
+            </search>
+
         </header>
         <main>
             <section>
