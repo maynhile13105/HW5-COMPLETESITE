@@ -8,6 +8,16 @@
     </head>
     <body>
         <header>
+            <h1>Movie website</h1>
+            <search>
+              <form action="./search/">
+                <label for="movie">Find a Movie</label>
+                <input type="search" id="movie" name="q" />
+                <button type="submit">Search</button>
+              </form>
+            </search>
+          </header>
+        <main>
             <a href="index.html">
                 <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
                     <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
@@ -15,8 +25,6 @@
                 </svg>
                 <i>Back</i>
             </a>
-        </header>
-        <main>
             <section>
                 <h3>Experiment for 'canvas' tag</h3>
                 <canvas id="canvas" style="border: black solid 1px;"></canvas>
@@ -61,7 +69,7 @@
                 </select>
             </section>    
             <experiment>
-                
+                <p>This is an <abbr title="experiment">exp</abbr> for custom tag and <code>&lt;abbr&gt;</code> tag.</p>
             </experiment>
         </main>
         <footer>
