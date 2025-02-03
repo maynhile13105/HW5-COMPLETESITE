@@ -20,52 +20,54 @@
                 <i>Back</i>
             </a>
         </header>
-
-        <experiment>
-            <section>
-                <h3>Experiment for 'canvas' tag</h3>
-                <canvas id="canvas" style="border: black solid 1px;"></canvas>
-                <script>
-                    let canvas = document.getElementById("canvas");
-                    let context = canvas.getContext("2d");
-                    context.moveTo(50,100);
-                    context.lineTo(100,100);
-                    context.stroke();
-                </script> 
-            </section>
-            <section>
-                <h3>Experiment for <code>&lt;hello-word&gt;</code> tag with <code>&lt;script&gt;</code> tag to display console messages</h3>
-                <hello-world></hello-world>
-                <script>
-                    // Define the custom element "hello-world"
-                    class HelloWorld extends HTMLElement {
-                      constructor() {
-                        super();
-                        // Log the message to the console when the element is created
-                        console.log('Hello world!');
-                      }
-                    }
+        <main>
+            <experiment>
+                <section>
+                    <h3>Experiment for 'canvas' tag</h3>
+                    <canvas id="canvas" style="border: black solid 1px;"></canvas>
+                    <script>
+                        let canvas = document.getElementById("canvas");
+                        let context = canvas.getContext("2d");
+                        context.moveTo(50,100);
+                        context.lineTo(100,100);
+                        context.stroke();
+                    </script> 
+                </section>
+                <section>
+                    <h3>Experiment for <code>&lt;hello-word&gt;</code> tag with <code>&lt;script&gt;</code> tag to display console messages</h3>
+                    <hello-world></hello-world>
+                    <script>
+                        // Define the custom element "hello-world"
+                        class HelloWorld extends HTMLElement {
+                          constructor() {
+                            super();
+                            // Log the message to the console when the element is created
+                            console.log('Hello world!');
+                          }
+                        }
+                    
+                        // Register the custom element
+                        customElements.define('hello-world', HelloWorld);
+                      </script>
+                </section>
+                <section>
+                    <h3>Experiment for <code>&lt;optgroup&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;option&gt;</code></h3>
+                    <select>
+                        <option value="" disabled selected hidden>Choose me</option>
+                        <optgroup label="Programming Language">
+                            <option value="C/C++">C/C++</option>
+                            <option value="Java">Java</option>
+                            <option value="HTML">HTML</option>
+                        </optgroup>
+                        <optgroup label="Tools">
+                            <option value="VSCode">VSCode</option>
+                            <option value="Jupyter">Jupyter Notebook</option>
+                        </optgroup>
+                    </select>
+                </section>    
+            </experiment>
+        </main>
                 
-                    // Register the custom element
-                    customElements.define('hello-world', HelloWorld);
-                  </script>
-            </section>
-            <section>
-                <h3>Experiment for <code>&lt;optgroup&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;option&gt;</code></h3>
-                <select>
-                    <option value="" disabled selected hidden>Choose me</option>
-                    <optgroup label="Programming Language">
-                        <option value="C/C++">C/C++</option>
-                        <option value="Java">Java</option>
-                        <option value="HTML">HTML</option>
-                    </optgroup>
-                    <optgroup label="Tools">
-                        <option value="VSCode">VSCode</option>
-                        <option value="Jupyter">Jupyter Notebook</option>
-                    </optgroup>
-                </select>
-            </section>    
-        </experiment>
 
         <footer>
             <h4><b>Give feedback via <i><del>uyle@ucsd.edu</del> <ins>maynhile13105@gmail.com</ins></i></b></h4>
