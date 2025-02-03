@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Persona</title>
+        <link rel="icon" href="/images/LOGO3.png">
+        <style>
+       
+
+        </style>
+    </head>
+    <body>
+        <header>
+            <a href="index.html">
+                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
+                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
+                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
+                </svg>
+                <i>Back</i>
+            </a>
+        </header>
+        <main>
+            <experiment>
+                <p>Experiment for 'canvas' tag</p>
+                <canvas id="canvas" style="border: black solid 1px;"></canvas>
+                <script>
+                    let canvas = document.getElementById("canvas");
+                    let context = canvas.getContext("2d");
+                    context.moveTo(50,100);
+                    context.lineTo(100,100);
+                    context.stroke();
+                </script> 
+            </experiment>
+            <experiment>
+                <p>Experiment for 'hello-word' tag with 'script' tag to display console messages</p>
+                <hello-world></hello-world>
+                <script>
+                    // Define the custom element "hello-world"
+                    class HelloWorld extends HTMLElement {
+                      constructor() {
+                        super();
+                        // Log the message to the console when the element is created
+                        console.log('Hello world!');
+                      }
+                    }
+                
+                    // Register the custom element
+                    customElements.define('hello-world', HelloWorld);
+                  </script>
+            </experiment>
+            <experiment>
+                <p>Experiment for <code>&lt;optgroup&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;option&gt;</code></p>
+                <select>
+                    <optgroup label="Programming Language">
+                        <option value="C/C++">C/C++</option>
+                        <option value="Java">Java</option>
+                        <option value="HTML">HTML</option>
+                    </optgroup>
+                    <optgroup label="Tools">
+                        <option value="VSCode">VSCode</option>
+                        <option value="Jupyter">Jupyter Notebook</option>
+                    </optgroup>
+                </select>
+               
+            </experiment>
+    
+           
+        </main>
+        <footer>
+            <h4><b>Give feedback via <i><del>uyle@ucsd.edu</del> <ins>maynhile13105@gmail.com</ins></i></b></h4>
+        </footer>
+    </body>
+</html>
