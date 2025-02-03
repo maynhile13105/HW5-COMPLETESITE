@@ -6,9 +6,11 @@
         <title>Exp</title>
         <link rel="icon" href="/images/LOGO3.png">
         <style>
-            .experiment-custom{
+            experiment-custom{
                 border: navy solid 1px;
+                width: 300px;
             }
+            
         </style>
     </head>
     <body>
@@ -59,7 +61,7 @@
                     customElements.define('hello-world', HelloWorld);
                   </script>
             </section>
-            <experiment-custom>
+            <section>
                 <h3>Experiment for <code>&lt;optgroup&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;option&gt;</code></h3>
                 <select>
                     <option value="" disabled selected hidden>Choose me</option>
@@ -73,9 +75,9 @@
                         <option value="Jupyter">Jupyter Notebook</option>
                     </optgroup>
                 </select>
-            </experiment-custom>    
+            <section>    
             <experiment-custom>
-                <p>This is an experiment for custom tag</p>
+                This is an experiment for custom tag.
             </experiment-custom>
         </main>
         <footer>
