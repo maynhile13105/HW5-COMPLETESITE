@@ -20,9 +20,10 @@
                 <i>Back</i>
             </a>
         </header>
-        <main>
-            <experiment>
-                <p>Experiment for 'canvas' tag</p>
+
+        <experiment>
+            <section>
+                <h3>Experiment for 'canvas' tag</h3>
                 <canvas id="canvas" style="border: black solid 1px;"></canvas>
                 <script>
                     let canvas = document.getElementById("canvas");
@@ -31,9 +32,9 @@
                     context.lineTo(100,100);
                     context.stroke();
                 </script> 
-            </experiment>
-            <experiment>
-                <p>Experiment for 'hello-word' tag with 'script' tag to display console messages</p>
+            </section>
+            <section>
+                <h3>Experiment for 'hello-word' tag with 'script' tag to display console messages</h3>
                 <hello-world></hello-world>
                 <script>
                     // Define the custom element "hello-world"
@@ -48,9 +49,9 @@
                     // Register the custom element
                     customElements.define('hello-world', HelloWorld);
                   </script>
-            </experiment>
-            <experiment>
-                <p>Experiment for <code>&lt;optgroup&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;option&gt;</code></p>
+            </section>
+            <section>
+                <h3>Experiment for <code>&lt;optgroup&gt;</code>, <code>&lt;select&gt;</code>, and <code>&lt;option&gt;</code></h3>
                 <select>
                     <optgroup label="Programming Language">
                         <option value="C/C++">C/C++</option>
@@ -62,11 +63,10 @@
                         <option value="Jupyter">Jupyter Notebook</option>
                     </optgroup>
                 </select>
-               
-            </experiment>
-    
-           
-        </main>
+            </section>
+            
+        </experiment>
+
         <footer>
             <h4><b>Give feedback via <i><del>uyle@ucsd.edu</del> <ins>maynhile13105@gmail.com</ins></i></b></h4>
         </footer>
