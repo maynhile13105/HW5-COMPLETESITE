@@ -19,7 +19,7 @@ section{
     border-radius: 10px;
     background-color: #fdebcc;
     width: var(--section-width, 26.5vw);
-    height: var(--section-height), 32.7vh;
+    height: var(--section-height, 32.7vh);
     padding: 5px;
 }
 #information-container{
@@ -42,7 +42,9 @@ section{
     justify-content: space-between;
     gap: 20px;
 }
-
+figure{
+    margin-top: -2vh;
+}
 figure img{
     width: calc(var(--section-width, 26vw) - 100px);
     height: auto;
