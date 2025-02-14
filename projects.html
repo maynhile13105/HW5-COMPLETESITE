@@ -5,46 +5,64 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Projects</title>
         <link rel="icon" href="/images/LOGO3.png">
+        <link rel="stylesheet" href="page-template.css">     
+        <style>
+            nav{
+                display: flex;
+                flex-direction: row;
+            }
+            main{
+                margin-top: 75px;
+                text-align: left;
+            }
+            
+            main * {
+                width: 50vw;
+                justify-content: center;
+            }
+            hgroup h2{
+                color: navy;
+                font-weight: bolder;
+            }
+            @media screen and (max-width: 450px) {
+                main{
+                    margin-top: 75px;
+                }
+                main *{
+                    width: 85vw;
+                }
+                hgroup h2{
+                    font-size: large;
+                }
+            }
+        </style>
     </head>
     <body>
         <header>
-            <dialog open>Sorry! Search box is not function yet!
-                <br> It will be available soon!
-            </dialog>
-            <aside>
-                <a href="index.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
-                        <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
-                    </svg>
-                    <i>Back</i>
-                </a>
-            </aside>
             <h1>PROJECTS</h1>
-            <search>
-                <form action="./search/">
-                    <label for="project">Find Project</label>
-                    <input type="text" id="project" name="project" list="suggest-project">
-                    <datalist id="suggest-project">
-                    <optgroup label="Team Projects">
-                        <option value="Web Application">Web Application</option>
-                        <option value="Machine Learning">Machine Learning</option>
-                        <option value="AI: Probabilistic">AI: Probabilistic</option>
-                    </optgroup>
-                    <optgroup label="Individual Projects">
-                        <option value="NFA-to-DFA Converter">NFA-to-DFA Converter</option>
-                        <option value="Encoder and Decoder">Encoder and Decoder</option>
-                    </optgroup>  
-                    </datalist>
-                    <button type="submit" disabled>Search</button>
-                </form>
-            </search>
-
+            <nav>
+                <a href="index.html">
+                    <img src="/images/home-icon.svg">
+                    <i>Home</i>
+                </a>
+                <a href="persona.html">
+                    <img src="/images/persona-icon.svg">
+                    <i>Persona</i>
+                </a>
+                <a href="resume.html">
+                    <img src="/images/resume-icon.svg">
+                    <i>Resume</i>
+                </a>
+                <a href="contact.html">
+                    <img src="/images/contact-icon.svg" style="width: 50px;">
+                    <i>Contact</i>
+                </a>
+            </nav>
         </header>
         <main>
             <section>
                 <hgroup>
-                    <h3>Web Application: Triton Cook</h3>
+                    <h2>Web Application: Triton Cook</h2>
                     <p>Team Project</p>
                 </hgroup>
                 <details>
@@ -71,7 +89,7 @@
             <hr>
             <section>
                 <hgroup>
-                    <h3>Machine Learning: Predict the car accident</h3>
+                    <h2>Machine Learning: Predict the car accident</h2>
                     <p>Team Project</p>
                 </hgroup>
                 <details>
@@ -89,7 +107,7 @@
             <hr>
             <section>
                 <hgroup>
-                    <h3>AI: Probabiblistic</h3>
+                    <h2>AI: Probabiblistic</h2>
                     <p>Team Project</p>
                 </hgroup>
                 <details>
@@ -100,7 +118,7 @@
             <hr>
             <section>
                 <hgroup>
-                    <h3>NFA-to-DFA Converter</h3>
+                    <h2>NFA-to-DFA Converter</h2>
                     <p>Individual Project</p>
                 </hgroup>
                 <details>
@@ -122,7 +140,7 @@
             <hr>
             <section>
                 <hgroup>
-                    <h3>Encoder and Decoder</h3>
+                    <h2>Encoder and Decoder</h2>
                     <p>Individual Project</p>
                 </hgroup>
                 <details>
@@ -139,11 +157,11 @@
                 <dl>
                     <dt><b>Demo</b></dt>
                     <dd>Will be available soon!</dd>
-                </dl>>
+                </dl>
             </section>
         </main>
         <footer>
-            <address><b>Give feedback via <i><del>uyle@ucsd.edu</del> <ins>maynhile13105@gmail.com</ins></i></b></address>
+            <address><b>Give feedbacks via <a href="mailto:maynhile13195@gmail.com">maynhile13105@gmail.com</a></b></address>
         </footer>
     </body>
 </html>

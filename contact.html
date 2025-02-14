@@ -5,49 +5,153 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Contact</title>
         <link rel="icon" href="/images/LOGO3.png">
+        <link rel="stylesheet" href="page-template.css">     
+        <style>
+            header{
+                height: 150px;
+                display: flex;
+                flex-direction: column;
+            }
+            main{ 
+                border-top: 150px;
+            }
+            nav{
+                display: flex;
+                flex-direction: row;
+            }
+            footer{
+                margin-top: 10vh;
+            }
+            .divider {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                font-size: x-large;
+                width: 50%; 
+                margin: 20px 0;
+            }
+
+            .divider::before,
+            .divider::after {
+                content: '';
+                flex-grow: 1; 
+                height: 2px;
+                background-color: #439BBD; 
+                display: block; 
+                margin: 0 10px;
+            }
+            .contact-icon{
+                width: 200px
+            }
+            section{
+                display: inline-flex;
+                align-items: center;
+                text-align: center;
+                justify-content: space-between;
+            }
+            section a{
+                align-items: center;
+            }
+            form{
+                width: 30vw;
+            }
+            input{
+                width: 80%;
+                height: 20px;
+            }
+            textarea{
+                width: 80%;
+                height: 100px;
+            }
+
+            @media screen and (max-width: 1200px){
+                .contact-icon{
+                    width: 120px
+                }
+                form{
+                    width: 50vw
+                }
+            }
+
+            @media screen and (max-width: 600px){
+                section{
+                    flex-direction: column;
+
+                }
+                h2{
+                    font-size: medium;
+                }
+                .contact-icon{
+                    width: 75px
+                }
+
+                .divider{
+                    font-size: medium;
+                }
+                hgroup h2, p{
+                    font-size: small;
+                }
+                form{
+                    width: 60vw;
+                }
+            }      
+
+        </style>
     </head>
     <body>
         <header>
-            <aside>
+            <nav>
                 <a href="index.html">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
-                        <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
-                    </svg>
-                    <i>Back</i>
+                    <img src="/images/home-icon.svg">
+                    <i>Home</i>
                 </a>
-            </aside>
+                <a href="persona.html">
+                    <img src="/images/persona-icon.svg">
+                    <i>Persona</i>
+                </a>
+                <a href="resume.html">
+                    <img src="/images/resume-icon.svg">
+                    <i>Resume</i>
+                </a>
+                <a href="projects.html">
+                    <img src="/images/project-icon.svg">
+                    <i>Projects</i>
+                </a>
+            </nav>
             <h1>CONTACT</h1>
         </header>
         <main>
             <section>
-                <h3>Social media</h3>
+                <h2>Social media</h2>
                 <a href="https://www.facebook.com/Nhi.Map.Lun">
-                    <img src="/images/facebook-icon.svg" alt="Facebook icon">  
+                    <img src="/images/facebook-icon.svg" alt="Facebook icon" class="contact-icon">  
                 </a>
                 <a href="https://www.instagram.com/nnnnnhi_/">
-                    <img src="/images/insta-icon.svg" alt="Instagram icon">        
+                    <img src="/images/insta-icon.svg" alt="Instagram icon" class="contact-icon">        
                 </a>
                     <a href="https://www.linkedin.com/in/maynhile13105/">
-                        <img src="/images/linkedin-icon.svg" alt="Linkedin icon">
+                        <img src="/images/linkedin-icon.svg" alt="Linkedin icon" class="contact-icon">
                     </a>
             </section>
-            <span><strong><i>Or</i></strong></span>
+            <div class="divider"><strong><i>Or</i></strong></div>
             <section>
-                <h3>Mail/Phone</h3>
-                <div>
-                    <img src="/images/gmail-icon.svg" alt="Gmail icon">
+                <h2>Mail/Phone</h2>
+                <a href="mailto: maynhile2709@gmail.com" style="display: flex; flex-direction: column;">
+                    <img src="/images/gmail-icon.svg" alt="Gmail icon" class="contact-icon">
                     <b>maynhile2709@gmail.com</b>
-                </div>
-                <div>
-                    <img src="images/phone-icon.svg" alt="Phone icon">
+                </a>
+                <a href="tel:+18587895776" style="display: flex; flex-direction: column;">
+                    <img src="images/phone-icon.svg" alt="Phone icon" class="contact-icon">
                     <b>+1 (858) - 789 - 5776</b>
-                </div>
+                </a>
             </section>
-            <span><strong><i>Or</i></strong></span>
-            <section>
-                <h3>Leave your information and message here!</h3>
-                <p>Uyen will contact you back in 24 hours!</p>
+            <div class="divider"><strong><i>Or</i></strong></div>
+            <section style="flex-direction: column;">
+                <hgroup>
+                    <h2>Leave your information and message here!</h2>
+                    <p>Uyen will contact you back in 24 hours!</p>
+                </hgroup>
                 <form>
                     <fieldset>
                         <legend><strong>Information & Message</strong></legend>
@@ -73,7 +177,7 @@
             </section>
         </main>
         <footer>
-            <address><b>Give feedback via <i><del>uyle@ucsd.edu</del> <ins>maynhile13105@gmail.com</ins></i></b></address>
+            <address><b>Give feedbacks via <a href="mailto:maynhile13195@gmail.com">maynhile13105@gmail.com</a></b></address>
         </footer>
     </body>
 </html>

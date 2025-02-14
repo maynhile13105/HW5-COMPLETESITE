@@ -5,23 +5,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Homepage</title>
         <link rel="icon" href="/images/LOGO3.png">
+        <link rel="stylesheet" href="page-template.css">        
         <style>
-            body{
-                height: 100vh;
-                text-align: center;
-                background: linear-gradient(180deg, #4bb4de, #f6e2bc);
-                display: flex;
-                flex-direction: column;
-                font-family: Copperplate, Papyrus, fantasy;
+            main{
+                margin-top: 100px;
             }
-            header{
-                font-size: x-large;
-                color: darkblue;
-                text-shadow: 0 0 5px yellow, 
-                            0 0 10px yellow, 
-                            0 0 15px lightgoldenrodyellow;
-            }
-            
             @keyframes self-rotate{
                 0% { transform: rotate(0deg); }
                 75% { transform: rotate(360deg); }
@@ -29,23 +17,15 @@
             }
             #logo{
                 animation: self-rotate 10s linear infinite;
-            }
-
-            main{
-                height: 80vh;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                row-gap: 10vh;
-                padding-bottom: 5%;
+                width: 25vw;
             }
             nav{
-                display: flex;
-                justify-content: space-between;
-                width: 45vw;
+                flex-direction: row;
+                justify-content: space-around;
+                width: 55vw;
                 font-size: x-large;
                 border-radius: 15px;
-                margin-top: 5vh;
+                height: fit-content;
             }
             nav a{
                 padding: 10px;
@@ -54,21 +34,56 @@
                 color: darkblue;
 
             }
-
             nav:hover a{
-                color: yellow;
-                background-color: #1c24c2;
-
+                color: rgb(0, 4, 255);
+                background-color: #a8f1ff;
             }
-
             nav a:hover{
                 background-color: #f8d49b;
                 color: navy;
             }
-            a{
-                text-decoration: none;
-            }
 
+            @media screen and (max-width: 1200px){
+                #logo{
+                    width: 45vw;
+                }
+                nav{
+                    width: 100vw;
+                    margin-top: -6vw;
+                }
+               
+            }
+            @media screen and (max-width: 1200px) and (max-height: 600px){
+                #logo{
+                    width: 22vw;
+                    margin-top: -2.5vw;
+                } 
+                nav{
+                    margin-top: -4vw;
+                }
+                a > img{
+                    width: px;
+                }
+            }
+            @media screen and (max-width: 750px){
+                nav{
+                    margin-top: -3vw;
+                    font-size: medium;
+                }
+                #logo{
+                    width: 22vw;
+                    margin-top: -3.5vw;
+                }
+            }
+            @media screen and (max-width: 600px){
+                #logo{
+                    width: 65vw;
+                    margin-top: 0px;
+                }
+                nav{
+                    font-size: medium;
+                }
+            }      
         </style>
     </head>
     <body>
@@ -77,16 +92,32 @@
         </header>
         <main>
             <nav >
-                <a href="persona.html">Persona</a>
-                <a href="resume.html">Resume</a>
-                <a href="projects.html">Projects</a>
-                <a href="contact.html">Contact</a>
+                <a href="persona.html">
+                    <img src="/images/persona-icon.svg">
+                    <i>Persona</i>
+                </a>
+                <a href="resume.html">
+                    <img src="/images/resume-icon.svg">
+                    <i>Resume</i>
+                </a>
+                <a href="projects.html">
+                    <img src="/images/project-icon.svg">
+                    <i>Projects</i>
+                </a>
+                <a href="contact.html">
+                    <img src="/images/contact-icon.svg">
+                    <i>Contact</i>
+                </a>
             </nav>
-            <img src="/images/LOGO3.png" alt="Personal Logo" width="50%" id="logo">
+            <img src="/images/LOGO3.png" alt="Personal Logo" id="logo">
         </main>
         <footer>
-            <address><b>Give feedbacks via <i><del>uyle@ucsd.edu</del> 
-                <ins><a href="mailto:maynhile13195@gmail.com">maynhile13105@gmail.com</a></ins></i></b></address>
+            <address>
+                <b>
+                    Give feedbacks via 
+                    <i><a href="mailto:maynhile13195@gmail.com">maynhile13105@gmail.com</a></i>
+                </b>
+            </address>
         </footer>
     </body>
 </html>

@@ -5,134 +5,150 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Persona</title>
         <link rel="icon" href="/images/LOGO3.png">
+        <link rel="stylesheet" href="page-template.css">  
+        <link rel="stylesheet" href="persona.css">  
+        <style>
+            section > h2{
+                color: navy;
+                text-decoration:underline;
+            }
+
+        </style>   
     </head>
     <body>
         <header>
-            <a href="index.html">
-                <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-box-arrow-in-left" viewBox="0 0 16 16">
-                    <path fill-rule="evenodd" d="M10 3.5a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v9a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-2a.5.5 0 0 1 1 0v2A1.5 1.5 0 0 1 9.5 14h-8A1.5 1.5 0 0 1 0 12.5v-9A1.5 1.5 0 0 1 1.5 2h8A1.5 1.5 0 0 1 11 3.5v2a.5.5 0 0 1-1 0z"/>
-                    <path fill-rule="evenodd" d="M4.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H14.5a.5.5 0 0 1 0 1H5.707l2.147 2.146a.5.5 0 0 1-.708.708z"/>
-                </svg>
-                <i>Back</i>
-            </a>
+            <h1 class="page-title">Persona</h1>
+            <aside>
+                <nav>
+                    <a href="index.html">
+                        <img src="/images/home-icon.svg">
+                        <i>Home</i>
+                    </a>
+                    <a href="resume.html">
+                        <img src="/images/resume-icon.svg">
+                        <i>Resume</i>
+                    </a>
+                    <a href="projects.html">
+                        <img src="/images/project-icon.svg">
+                        <i>Projects</i>
+                    </a>
+                    <a href="contact.html">
+                        <img src="/images/contact-icon.svg">
+                        <i>Contact</i>
+                    </a>
+                </nav>
+            </aside>
         </header>
         <main>
-            <table>
-                <caption><h1>Persona</h1></caption>
-                <colgroup>
-                    <col span="2" style="border-right: black solid 2px;">
-                    <col span="1" style="border: none;">
-                </colgroup>
-                <tr>
-                    <td>
-                        <figure>
-                            <img src="/images/Avatar.jpg" width="250" alt="Uyen's avatar">
-                            <figcaption><h2>UYEN NHI LE</h2></figcaption>
-                        </figure>
-                    </td>
-                    <td>
-                        <h3>Bio</h3>
-                        <pre>
-    She is from Vietnam.
-    But now she is living in San Diego, California, USA.
-    She loves travelling.
-                            
-    She always does her best on every assigned work.
-    She loves and is willings to do new things.
-    And she always solve the problems as much creative as she can.
-                            
-    She does not usually listen to music. 
-    But her idol is a famous singer in Vietnam.
-    When she studies, she usually plays "study sounds".
-    Below is one of her favorite sounds.
-                        </pre>
-                        <audio controls>
-                            <source src="/study-in-b-minor-75946.mp3" type="audio/mpeg">
-                        </audio>
-                    </td>
-                    <td>
-                        <h3>Programming Language</h3>
-                        <ul>
-                            <li>C++</li>
-                            <li>Java</li>
-                            <li>Python</li>
-                            <li>HTML/CSS</li>
-                            <li>Javascript</li>
-                        </ul>
-                    </td>
-                    
-                </tr>
-                <tr>
-                    <td>
-                        <table>
-                            <tr>
-                                <th> Age </th>
-                                <td> 24 </td>
-                            </tr> 
-                            
-                            <tr>
-                                <th> Status </th>
-                                <td> Single </td>
-                            </tr>      
-                            <tr>
-                                <th>Location</th>
-                                <td>San Diego, California, USA</td>
-                            </tr>
-                            <tr>
-                                <th> Education </th>
-                                <td> Bachelor in Computer Science</td>
-                            </tr>
-                        </table>
-                    </td>
-                    <td>
-                            <blockquote 
-                            cite="https://www.goodreads.com/author/quotes/4310111.Joel_Brown">
-                                <strong>
-                                    "The only thing that stands between you and<br>
-                                    your dream is the will to try and the belief <br>
-                                    that it is actually possible." - <cite>Joel_Brown</cite>
-                                </strong>
-                            </blockquote>
-                    </td>
-                    <td>
-                        <h3>Goals</h3>
-                        <ol>
-                            <li>Have a software engineer job</li>
-                            <li>Buy a 4-bedroom house</li>
-                            <li>Travel abroad once per year</li>
-                        </ol>
-                    </td>
-                </tr>
-        
-                <tr>
-                    <td>
-                        <h3>Personality</h3>
-                        <ul>
-                            <li>Creative</li>
-                            <li>Practical</li>
-                            <li>Proactive</li>
-                            <li>Hardworking</li>
-                        </ul>
-                    </td>
-                    <td>
-                        <h3>Frustrations</h3>
-                        <ol>
-                            <li>Late</li>
-                            <li>Irresponsibility</li>
-                        </ol>
-                    </td> 
-                    <td>
-                        <h3>Tools</h3>
+            <div class="column">
+                <figure>
+                    <figcaption><h3>May Nhi Le</h2></figcaption>
+                    <img src="/images/Avatar.jpg" alt="Uyen's avatar">
+
+                </figure>
+                <section id="information-container">
+                    <h2 style="display: none;">Information</h2>
+                    <table>
+                        <tr>
+                            <th> Age </th>
+                            <td> 24 </td>
+                        </tr> 
+                        <tr>
+                            <th> Status </th>
+                            <td> Single </td>
+                        </tr>      
+                        <tr>
+                            <th>Location</th>
+                            <td>San Diego, California, USA</td>
+                        </tr>
+                        <tr>
+                            <th> Education </th>
+                            <td> Bachelor Degree in Computer Science</td>
+                        </tr>
+                    </table>
+                </section>
+            </div>
+            <div class="column">
+                <section>
+                    <h2>Biography</h2>
+                    <p>
+                        May was born and growth up in Vietnam. Her Vietnamese name is Uyen Nhi Le.
+                        When she was twenty, she moved to San Diego, CA, U.S.A. 
+                        <br>
+                        <br>
+                        She always does her best on every assigned work.
+                        She loves and is willing to do new things.
+                        And she always solves problems as much creatively as she can.
+                        <br>
+                        
+                    </p>
+                </section>
+                 
+                <section>
+                    <h2>Personality</h2>
+                        <div id="personality-container">
+                            <span role="text" style="background-color: #ffcf83">Practical</span>
+                            <span role="text" style="background-color: #fad493;">Creative</span>
+                            <span role="text" style="background-color: #85d1fc;">Proactive</span>
+                            <span role="text" disabled style="background-color: #66b8ff;">Hard-working</span>
+                        </div>
+                    </table>
+                </section>
+            </div>
+            <div class="column">
+                <section>
+                    <h2>Programming Language</h2>
+                    <ul class="skill-ratings">
+                        <li>
+                            <p>C++</p>
+                            <span class="rating-stars">
+                                <span class="shining-stars">★★★★★</span>
+                            </span>
+                        </li>
+                        <li>
+                            <p>Java</p>
+                            <span class="rating-stars">
+                                <span class="shining-stars">★★★★</span>
+                                <span class="empty-stars">★</span>
+                            </span>
+                        </li>
+                        <li>
+                            <p>Python</p>
+                            <span class="rating-stars">
+                                <span class="shining-stars">★★★★</span>
+                                <span class="empty-stars">★</span>
+                            </span>
+                        </li>
+                        <li>
+                            <p>Javascript</p>
+                            <span class="rating-stars">
+                                <span class="shining-stars">★★★</span>
+                                <span class="empty-stars">★★</span>
+                            </span>
+                        </li>
+                        <li>
+                            <p>HTML/CSS</p>
+                            <span class="rating-stars">
+                                <span class="shining-stars">★★★</span>
+                                <span class="empty-stars">★★</span>
+                            </span>
+                        </li>
+    
+                    </ul>
+                </section>
+                <section>
+                    <h2>Tools</h2>
+                    <div>
                         <img src="/images/github-icon.svg" alt="Github icon">
                         <img src="/images/VSCode-icon.svg" alt="VSCode icon">
                         <img src="/images/microsoft365-icon.svg" alt="Microsofr 365">
                         <img src="/images/jupyter-icon.svg" alt="Jupyter Notebook">
-                    </td> 
-                </tr>
-            </table>
+                    </div>
+                </section>
+            </div>
         </main>
         <footer>
-            <address><b>Give feedback via <i><del>uyle@ucsd.edu</del> <ins>maynhile13105@gmail.com</ins></i></b></address>
+            <address><b>Give feedbacks via <a href="mailto:maynhile13195@gmail.com">maynhile13105@gmail.com</a></b></address>
         </footer>
     </body>
 </html>

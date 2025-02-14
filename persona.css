@@ -1,0 +1,222 @@
+:root {
+    --header-height: 10vh;
+    --aside-width: 10vw;
+    --section-width: calc((100vw - var(--aside-width)) / 3.25  - 200px);
+    --section-height: calc((100vh - var(--header-height)) / 2.75);
+    --grid-column-width: calc(var(--section-width) + 15px)
+}
+
+main{
+    flex-direction: row;
+    column-gap: 20px;
+    margin-left: var(--aside-width);
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+section{
+    border: 1px solid yellow;
+    border-radius: 10px;
+    background-color: #fdebcc;
+    width: var(--section-width);
+    height: var(--section-height);
+    padding: 5px;
+}
+#information-container{
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    flex-direction: column; 
+    text-align: center; 
+}
+.column:nth-child(1){
+    align-items: center;
+}
+.column section:nth-child(2){
+    height: calc(var(--section-height) / 2);
+}
+
+.column{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+figure img{
+    width: calc(var(--section-width) - 100px);
+    height: auto;
+    border-radius: 50px;
+    margin-top: -2vw;
+}
+figcaption{
+    font-family: 'designed-font', sans-serif;
+    font-size: xx-large;
+    font-weight: bolder;
+    margin-top: -2.6vw;
+
+}
+@font-face {
+    font-family: designed-font;
+    src: url(/font/QEBEV.ttf) ;
+}
+table{
+    font-size: larger;
+}
+th{
+    text-align: right;
+    padding: 0px 10px;
+}
+td{
+    text-align: left;
+}
+#personality-container span{
+    padding: 5px;
+    border-radius: 5px;
+    text-align: center;
+    width: 130px;
+    font-weight: bold;
+}
+#personality-container{
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-evenly;
+    row-gap: 10px;
+}
+.skill-ratings{
+    list-style: none;
+}
+
+.skill-ratings li{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+}
+.skill-ratings li  p{
+    width: 130px;
+    text-align: right;
+}
+.rating-stars{
+    display: flex;
+    justify-content: center; /* Centers stars */
+    margin-left: 30px;
+    font-size: x-large;
+}
+.shining-stars{
+    color: gold;
+    text-shadow: 
+                0 0 10px #ffd700b3, 
+                0 0 15px #ffd70080;
+}
+
+.empty-stars{
+    color: darkgray;
+}  
+
+@media screen and (max-width: 1500px){
+    :root{
+        --section-width: 25vw;
+        --section-height: 50vh;
+    }
+    .skill-ratings li{
+        margin-left: -20px;
+    }
+   
+}
+
+@media screen and (max-width: 1200px){
+    :root{
+        --aside-width: 100px;
+        --section-width: 50vw;
+        --section-height: fit-content;
+    }
+    header h1{
+        margin-left: var(--aside-width);
+    }
+    table, p, #personality-container{
+        font-size: large;
+    }
+    figure img{
+        width: var(--section-width)
+    }  
+    main{
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+    }
+    section{
+        font-size: larger;
+    }
+    #personality-container{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .skill-ratings li{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        margin-left: -10px;
+    }
+    .skill-ratings li p{
+        margin-left: 0px;
+        text-align: center;
+    }
+    .rating-stars{
+        margin-left: 0px;
+    }
+}
+
+
+@media screen and (max-width: 700px){
+    :root{
+        --aside-width: 50px;
+        --section-width: 250px;
+        --section-height: fit-content;
+    }
+    h2{
+        font-size: large;
+    }
+    table, p, #personality-container{
+        font-size: medium;
+    }
+    
+    figcaption{
+        font-size: x-large;
+    }
+    aside{
+        margin-left: -8px;
+    }
+    nav{
+        font-size: x-small;
+    }
+    nav img{
+        width: 25px;
+    }
+    main{
+        margin-left: 0 ;        
+    } 
+}
+@media screen and (max-width: 400px){
+    :root{
+        --aside-width: 50px;
+        --section-width: 200px;
+        --section-height: fit-content;
+    } 
+    h2{
+        font-size: large;
+    }
+    table, p, #personality-container{
+        font-size: medium;
+    }
+    figcaption{
+        font-size: x-large;
+    }
+
+    main{
+        margin-left: 10px ;        
+    } 
+
+}
