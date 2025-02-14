@@ -8,48 +8,51 @@
         <link rel="stylesheet" href="page-template.css">     
         <style>
             iframe{
-                width: 570px;
-                height: 700px;
+                width: fit-content;
+                aspect-ratio: 1 / 1.414;
             }
-            @media screen and (max-width) {
-                iframe{
-                    width: 80vw;
-                    height: 50vh;
-                }
-                
-                                
+            header{
+                height: 150px;
+                display: flex;
+                flex-direction: column;
             }
+            nav{
+                display: flex;
+                flex-direction: row;
+            }
+            
         </style>
     </head>
     <body>
         <header>
+            
+            <nav>
+                <a href="index.html">
+                    <img src="/images/home-icon.svg">
+                    <i>Home</i>
+                </a>
+                <a href="persona.html">
+                    <img src="/images/persona-icon.svg">
+                    <i>Persona</i>
+                </a>
+                <a href="projects.html">
+                    <img src="/images/project-icon.svg">
+                    <i>Projects</i>
+                </a>
+                <a href="contact.html">
+                    <img src="/images/contact-icon.svg">
+                    <i>Contact</i>
+                </a>
+            </nav>
             <h1>Resume</h1>
-            <aside>
-                <nav>
-                    <a href="index.html">
-                        <img src="/images/home-icon.svg">
-                        <i>Home</i>
-                    </a>
-                    <a href="persona.html">
-                        <img src="/images/persona-icon.svg">
-                        <i>Persona</i>
-                    </a>
-                    <a href="projects.html">
-                        <img src="/images/project-icon.svg">
-                        <i>Projects</i>
-                    </a>
-                    <a href="contact.html">
-                        <img src="/images/contact-icon.svg">
-                        <i>Contact</i>
-                    </a>
-                </nav>
-            </aside>
         </header>
         <main>
             <details>
                 <summary><strong>Summary</strong></summary>
                 <p>
-                    <em>Current Major GPA: 3.89</em> - Overall GPA: 3.787
+                    <em>Current Major GPA: 3.89</em>
+                    <br>
+                    Overall GPA: 3.787
                     <br>
                     Expected Graduation: June 2025
                     <br>
