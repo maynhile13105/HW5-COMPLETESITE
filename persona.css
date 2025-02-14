@@ -18,8 +18,8 @@ section{
     border: 1px solid yellow;
     border-radius: 10px;
     background-color: #fdebcc;
-    width: var(--section-width);
-    height: var(--section-height);
+    width: var(--section-width, 26.5vw);
+    height: var(--section-height), 32.7vh;
     padding: 5px;
 }
 #information-container{
@@ -33,7 +33,7 @@ section{
     align-items: center;
 }
 .column section:nth-child(2){
-    height: calc(var(--section-height) / 2, 16vh);
+    height: calc(var(--section-height, 32.7vh) / 2);
 }
 
 .column{
