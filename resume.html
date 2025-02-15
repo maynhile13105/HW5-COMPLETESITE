@@ -8,8 +8,8 @@
         <link rel="stylesheet" href="page-template.css">     
         <style>
             iframe{
-                width: fit-content;
-                aspect-ratio: 1 / 1.414;
+                width: 50dvw;
+                height: 50dvh;
             }
             header{
                 height: 150px;
@@ -19,6 +19,12 @@
             nav{
                 display: flex;
                 flex-direction: row;
+            }
+            @media screen and (max-width: 1600px) {
+                iframe{
+                    width: fit-content;
+                    aspect-ratio: 1 / 1.414;
+                }
             }
             
         </style>
