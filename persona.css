@@ -1,28 +1,30 @@
 :root {
-    --header-height: 10vh;
-    --aside-width: 10vw;
-    --section-width: calc((100vw - var(--aside-width)) / 3.25  - 200px);
-    --section-height: calc((100vh - var(--header-height)) / 2.75);
+    --header-height: 150px;
+    --section-width: calc(100dvw / 5.5);
+    --section-height: calc((100dvh - var(--header-height)) / 2.75);
     --grid-column-width: calc(var(--section-width) + 15px)
 }
 
+header{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+}
 main{
-    flex-direction: row;
-    column-gap: 20px;
-    margin-left: var(--aside-width, 10vw);
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    justify-content: space-evenly;
+    grid-template-columns: auto auto auto;
     padding-bottom: 10px;
 }
 section{
     border: 1px solid yellow;
     border-radius: 10px;
     background-color: #fdebcc;
-    width: var(--section-width, 26.5vw);
-    height: var(--section-height, 32.7vh);
+    width: var(--section-width, 26.5dvw);
+    height: var(--section-height, 32.7dvh);
     padding: 5px;
 }
-#information-container{
+#information{
     display: flex;
     justify-content: center; 
     align-items: center; 
@@ -32,30 +34,33 @@ section{
 .column:nth-child(1){
     align-items: center;
 }
+.column:nth-child(2) section:nth-child(1) p{
+    padding: 0px 20px;
+}
 .column section:nth-child(2){
-    height: calc(var(--section-height, 32.7vh) / 2);
+    height: calc(var(--section-height, 32.7dvh) / 2);
 }
 
 .column{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    gap: 20px;
+    row-gap: 20px;
 }
 figure{
-    margin-top: -2vh;
+    margin-top: -2dvh;
 }
 figure img{
-    width: calc(var(--section-width, 26vw) - 100px);
+    width: calc(var(--section-width, 26dvw) - 100px);
     height: auto;
     border-radius: 50px;
-    margin-top: -2vw;
+    margin-top: -2dvw;
 }
 figcaption{
     font-family: 'designed-font', sans-serif, Arial;
     font-size: xx-large;
     font-weight: bolder;
-    margin-top: -2.6vw;
+    margin-top: -2.6dvw;
 
 }
 @font-face {
@@ -118,10 +123,18 @@ td{
     color: darkgray;
 }  
 
+@media screen and (max-width: 2000px){
+    :root{
+        --section-height: 38dvh;
+    }
+    figure img{
+        width: var(--section-width);
+    }
+}
 @media screen and (max-width: 1500px){
     :root{
-        --section-width: 25vw;
-        --section-height: 50vh;
+        --section-width: 25dvw;
+        --section-height: 50dvh;
     }
     .skill-ratings li{
         margin-left: -20px;
@@ -131,8 +144,8 @@ td{
 
 @media screen and (max-width: 1200px){
     :root{
-        --aside-width: 100px;
-        --section-width: 50vw;
+        --aside-width: 100dpx;
+        --section-width: 50dvw;
         --section-height: fit-content;
     }
     header h1{

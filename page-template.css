@@ -1,6 +1,7 @@
 :root {
-    --header-height: 10vh;
-    --aside-width: 10vw;
+    --header-height: 10dvh;
+    --aside-width: 10dvw;
+    --linear-background: linear-gradient(180deg, #4bb4de, #f6e2bc);
 }
 html {
     overflow: hidden; 
@@ -8,7 +9,7 @@ html {
 body{
     height: 100vh;
     text-align: center;
-    background: linear-gradient(180deg, #4bb4de, #f6e2bc), #4bb4de;
+    background: var(--linear-background, #4bb4de);
     display: flex;
     flex-direction: column;
     font-family: Copperplate, Papyrus, fantasy;
@@ -18,12 +19,12 @@ body{
 }
 aside{
     height: 100vh;
-    width: var(--aside-width, 10vw);
+    width: var(--aside-width, 10dvw);
     position: fixed;
     z-index: 1000;
 }
 header h1{
-    font-size: xx-large;
+    font-size: 45px;
     color: darkblue;
     text-shadow: 0 0 5px yellow, 
                 0 0 10px yellow, 
@@ -31,7 +32,7 @@ header h1{
 }
 header{
     width: 100%;
-    height: var(--header-height, 10vh);
+    height: var(--header-height, 10dvh);
     margin-top: 10px;
 }
 
@@ -58,7 +59,7 @@ nav img{
 }
 nav{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: space-evenly;
     height: 50vh;
     font-size: large;
@@ -73,7 +74,7 @@ nav a:hover{
 
 @media screen and (max-width: 750px){
     :root{
-        --aside-width: 5vw;
+        --aside-width: 5dvw;
     }
     header h1{
         font-size: x-large;
@@ -89,8 +90,8 @@ nav a:hover{
 
 @media screen and (max-height: 420px){
     aside{
-        margin-top: -15vh;
-        width: 5vh;
+        margin-top: -15dvh;
+        width: 5dvh;
     }
     nav a img{
         width: 40px;
