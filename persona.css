@@ -24,16 +24,7 @@ section{
     height: var(--section-height, 32.7dvh);
     padding: 5px;
 }
-#information{
-    display: flex;
-    justify-content: center; 
-    align-items: center; 
-    flex-direction: column; 
-    text-align: center; 
-}
-.column:nth-child(1){
-    align-items: center;
-}
+
 .column:nth-child(2) section:nth-child(1) p{
     padding: 0px 20px;
 }
@@ -61,6 +52,16 @@ figcaption{
     font-size: xx-large;
     font-weight: bolder;
     margin-top: -2.6dvw;
+}
+figure h2{
+    color: color(from rgb(255, 106, 0) srgb r g b / 0.9);
+    text-shadow: 0 0 10px rgb(250, 244, 132),
+                 0 0 15px rgb(224, 249, 83),
+                 0 0 15px rgb(239, 252, 58);
+}
+h2:has(+ *){
+    color: orange;
+    text-decoration: underline color(from rgb(255, 115, 0) srgb r g b / 0.7);
 
 }
 @font-face {
