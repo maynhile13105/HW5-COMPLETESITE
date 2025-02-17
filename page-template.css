@@ -71,7 +71,11 @@ nav a:hover{
     transform: scale(1.4);
     transition: transform 0.3s ease-in-out;
 }
-
+@media screen and (max-width: 1500px){
+    footer{
+        padding-bottom: 30px;
+    }
+}
 @media screen and (max-width: 750px){
     :root{
         --aside-width: 5dvw;
