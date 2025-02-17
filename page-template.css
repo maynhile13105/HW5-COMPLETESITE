@@ -4,7 +4,7 @@
     --linear-background: linear-gradient(180deg, #4bb4de, #f6e2bc);
 }
 html {
-    overflow: hidden; 
+    overflow: auto; 
 }
 body{
     height: 100vh;
