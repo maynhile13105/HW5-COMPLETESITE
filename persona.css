@@ -155,6 +155,9 @@ td{
     figure img{
         height: var(--section-width);
     }
+    footer{
+        padding-bottom: 30px;
+    }
    
 }
 
