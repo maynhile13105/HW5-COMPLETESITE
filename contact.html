@@ -73,6 +73,9 @@
                 color: blue;
                 display: block;
             }
+            .indicator{
+                color: red;
+            }
             .contact-icon:hover{
                 transform: scale(1.5) rotate(-360deg);
                 transition: transform 0.3s ease-in-out;
@@ -168,21 +171,30 @@
                 <form method="POST" action="https://httpbin.org/post" id="mess-form">
                     <fieldset>
                         <legend><strong>Information & Message</strong></legend>
-                        <label for="fullname"><b>Full Name</b></label>
+                        <label for="fullname">
+                            <b>Full Name</b>
+                            <strong class="indicator">*</strong>
+                        </label>
                         <input type="text" name="fullname" id="fullname" required>
                         <output class="error" id="error-name"></output>
                         <output class="information" id="info-name">
                             Full name = First name + Last name
                         </output>
 
-                        <label for="email"><b>Email</b></label>
+                        <label for="email">
+                            <b>Email</b>
+                            <strong class="indicator">*</strong>
+                        </label>
                         <input type="email" name="email" id="email" required>
                         <output class="error" id="error-email"></output>
                         <output class="information" id="info-email">
                             Valid email format: "id@domain"
                         </output>
 
-                        <label for="comments"><b>Comments</b></label>
+                        <label for="comments">
+                            <b>Comments</b>
+                            <strong class="indicator">*</strong>
+                        </label>
                         <textarea rows="4" cols="35"
                          placeholder="Leave your comment/message here" 
                          id="comments" name="comments" required>
