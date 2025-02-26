@@ -70,6 +70,7 @@
             .information{
                 font-size: small;
                 color: blue;
+                display: block;
             }
             .contact-icon:hover{
                 transform: scale(1.5) rotate(-360deg);
@@ -217,21 +218,17 @@
                                 errorName.textContent="Please enter your First and Last name!";
                                 errorName.style.display = "block";
                                 errors += 1;
-                            } else{
-                                nameError.style.display = "none";
                             }
-
                             if(inputEmail.value.trim()===""){
                                 errorEmail.style.display="block";
                                 errorEmail.textContent="Please enter your valid email!";
                                 errors += 1;
-                            } else{
-                                errorEmail.style.display="none"
                             }
 
                             if(inputMessage.value.trim() === ""){
                                 errorComment.style.display="block";
                                 errorComment.textContent="No messages or comments are left!"
+                                errors +=1;
                             }
                             if(errors == 0){
                                 form.submit();
