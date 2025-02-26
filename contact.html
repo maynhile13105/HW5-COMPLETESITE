@@ -173,9 +173,17 @@
                          placeholder="Leave your comment/message here" id="comments" name="comments" required></textarea>          
                         <br>
                         <input type="hidden" name="possible_bot" value="true">
+                        <input type="hidden" name="post_date" id="post_date">
                         <button type="submit">Send</button> 
                     </fieldset>
                 </form>
+
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        let date = new Date().toUTCString(); // Example: "Tue, 26 Feb 2025 21:21:00 GMT"
+                        document.getElementById("post-date").value = date;
+                    });
+                </script>
             </section>
         </main>
         <footer>
