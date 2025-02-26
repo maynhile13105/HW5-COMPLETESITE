@@ -203,7 +203,6 @@
                         <output class="information" id="info-cmt">
                             Leave your message and Uyen will contact you back!</output>
                         <input type="hidden" name="possible_bot" value="true">
-                        <input type="hidden" name="date" id="post_date">
                         <button type="submit">Send</button> 
                     </fieldset>
                 </form>
@@ -214,8 +213,6 @@
 
                         form.addEventListener("submit", function(event){
                             event.preventDefault();
-                            let date = new Date().toDateString();
-                            document.getElementById("post_date").value = date;
                             let errors = 0;
 
                             let inputName = document.getElementById("fullname");
