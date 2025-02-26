@@ -235,10 +235,10 @@
                                 form.submit();
                             }
                         });
-                    function checkNameValidation(name){
-                        let pattern = /^[A-Za-z]+ [A-Za-z]+$/;
-                        return pattern.test(name); 
-                    }                        
+                        function checkNameValidation(name){
+                            let pattern = /^[A-Za-z]+(?: [A-Za-z]+)+$/;
+                            return pattern.test(name);
+                        }
                     });
                 </script>
             </section>
