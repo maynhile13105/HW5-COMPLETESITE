@@ -56,13 +56,20 @@
             form{
                 width: 30dvw;
             }
+            fieldset{
+                display: flex;
+                flex-direction: column;
+            }
             input{
-                width: 80%;
                 height: 20px;
             }
-            textarea{
-                width: 80%;
-                height: 100px;
+            .error{
+                font-size: small;
+                color: red;
+            }
+            .information{
+                font-size: small;
+                color: blue;
             }
             .contact-icon:hover{
                 transform: scale(1.5) rotate(-360deg);
@@ -156,22 +163,31 @@
                     <h2>Leave your information and message here!</h2>
                     <p>Uyen will contact you back in 24 hours!</p>
                 </hgroup>
-                <form method="POST" action="https://httpbin.org/post">
+                <form method="POST" action="https://httpbin.org/post" id="mess-form">
                     <fieldset>
                         <legend><strong>Information & Message</strong></legend>
                         <label for="fullname"><b>Full Name</b></label>
-                        <br> 
                         <input type="text" name="fullname" id="fullname" required>
-                        <br>
+                        <output class="error" id="error-name"></output>
+                        <output class="information" id="info-name">
+                            Full name = First name + Last name
+                        </output>
+
                         <label for="email"><b>Email</b></label>
-                        <br>
                         <input type="email" name="email" id="email" required>
-                        <br>
+                        <output class="error" id="error-email"></output>
+                        <output class="information" id="info-email">
+                            Valid email format: "id@domain"
+                        </output>
+
                         <label for="comments"><b>Comments</b></label>
-                        <br>
-                        <textarea rows="4" cols="3"
-                         placeholder="Leave your comment/message here" id="comments" name="comments" required></textarea>          
-                        <br>
+                        <textarea rows="4" cols="35"
+                         placeholder="Leave your comment/message here" 
+                         id="comments" name="comments" required>
+                        </textarea>          
+                        <output class="error" id="error-cmt"></output>
+                        <output class="information" id="info-cmt">
+                            Leave your message and Uyen will contact you back!</output>
                         <input type="hidden" name="possible_bot" value="true">
                         <input type="hidden" name="Date" id="post_date">
                         <button type="submit">Send</button> 
@@ -180,14 +196,57 @@
 
                 <script>
                     document.addEventListener("DOMContentLoaded", function() {
-                        let date = new Date().toUTCString(); // Example: "Tue, 26 Feb 2025 21:21:00 GMT"
-                        document.getElementById("post_date").value = date;
+                        const form = document.getElementById("mess-form");
+
+                        form.addEventListener("submit", function(event){
+                            event.preventDefault();
+                            let date = new Date().toUTCString();
+                            document.getElementById("post_date").value = date;
+                            let errors = 0;
+
+                            let inputName = document.getElementById("fullname");
+                            let inputEmail = document.getElementById("email");
+                            let inputMessage = document.getElementById("comments");
+
+                            let errorName = document.getElementById("error-name");
+                            let errorEmail = document.getElementById("error-email");
+                            let errorComment = document.getElementById("error-cmt");
+
+                            if(!checkNameValidation(inputName.value.trim()) 
+                            || inputName.value.trim()===""){
+                                errorName.textContent="Please enter your First and Last name!";
+                                errorName.style.display = "block";
+                                errors += 1;
+                            } else{
+                                nameError.style.display = "none";
+                            }
+
+                            if(inputEmail.value.trim()===""){
+                                errorEmail.style.display="block";
+                                errorEmail.textContent="Please enter your valid email!";
+                                errors += 1;
+                            } else{
+                                errorEmail.style.display="none"
+                            }
+
+                            if(inputMessage.value.trim() === ""){
+                                errorComment.style.display="block";
+                                errorComment.textContent="No messages or comments are left!"
+                            }
+                            if(errors == 0){
+                                form.submit();
+                            }
+                        });
+                    function checkNameValidation(name){
+                        let pattern = /^[A-Za-z]+ [A-Za-z]+$/;
+                        return pattern.test(name); 
+                    }                        
                     });
                 </script>
             </section>
         </main>
         <footer>
-            <address><b>Give feedbacks via <a href="mailto:maynhile13105@gmail.com">maynhile13105@gmail.com</a></b></address>
+            <address><b>Give feedbacks via <a href="mailto:maynhile2709@gmail.com">maynhile2709@gmail.com</a></b></address>
         </footer>
     </body>
 </html>
