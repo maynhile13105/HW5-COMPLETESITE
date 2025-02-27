@@ -176,28 +176,17 @@
                             <strong class="indicator">*</strong>
                         </label>
                         <input type="text" name="fullname" id="fullname" required>
-                        <output class="error" id="error-name"></output>
-                        <output class="information" id="info-name">
-                           Tips: Full name = First name + Last name
-                        </output>
 
                         <label for="email">
                             <b>Email</b>
                             <strong class="indicator">*</strong>
                         </label>
                         <input type="email" name="email" id="email" required>
-                        <output class="error" id="error-email"></output>
-                        <output class="information" id="info-email">
-                            Tips: Valid email format: "id@domain"
-                        </output>
-
+                        
                         <label for="company">
                             <b>Company</b>
                         </label>
                         <input type="text" name="company" id="company">
-                        <output class="information" id="info-company">
-                            Let Uyen know where you are from if you are a recruiter!
-                        </output>
 
                         <label for="comments">
                             <b>Comments</b>
@@ -207,10 +196,22 @@
                          placeholder="Leave your comment/message here" 
                          id="comments" name="comments" required>
                         </textarea>          
-                        <output class="error" id="error-cmt"></output>
-                        <output class="information" id="info-cmt">
-                            Leave your message and Uyen will contact you back!</output>
+                
                         <input type="hidden" name="possible_bot" value="true">
+                        <output class="error" id="error-name"></output>
+                        <output class="error" id="error-email"></output>
+                        <output class="error" id="error-cmt"></output>
+                        <output class="information">
+                            <p>Tips:
+                                <br>
+                                - Full name must be "First-name Last-name"
+                                <br>
+                                - Valid email format: "id@domain"
+                                <
+                                <br>
+
+                            </p>
+                        </output>
                         <button type="submit">Send</button> 
                         <span class="note" style="display: flex; justify-content: center;">
                             <p>Notes: <strong class="indicator">*</strong> - required Field</p>
