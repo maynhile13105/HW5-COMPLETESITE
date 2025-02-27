@@ -68,7 +68,7 @@
                 color: red;
                 display: none;
             }
-            .information{
+            .information, .note{
                 font-size: small;
                 color: blue;
                 display: block;
@@ -212,7 +212,11 @@
                             Leave your message and Uyen will contact you back!</output>
                         <input type="hidden" name="possible_bot" value="true">
                         <button type="submit">Send</button> 
+                        <span class="note" style="display: flex; justify-content: center;">
+                            <p>Notes: <strong class="indicator">*</strong> - required Field</p>
+                        </span>
                     </fieldset>
+                   
                 </form>
 
                 <script>
