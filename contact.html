@@ -206,6 +206,7 @@
                          id="comments" name="comments" required></textarea>  
         
                         <input type="hidden" name="possible_bot" value="true">
+                        <output class="error" id="error-label"></output>
                         <output class="error" id="error-name"></output>
                         <output class="error" id="error-email"></output>
                         <output class="error" id="error-cmt"></output>
@@ -241,6 +242,7 @@
                             let errorName = document.getElementById("error-name");
                             let errorEmail = document.getElementById("error-email");
                             let errorComment = document.getElementById("error-cmt");
+                            let errorLabel = document.getElementById("error-label");
 
                             if(!checkNameValidation(inputName.value.trim()) 
                             || inputName.value.trim()===""){
@@ -261,6 +263,8 @@
                             }
                             if(errors == 0){
                                 form.submit();
+                            } else{
+                                errorLabel.style.display="block";
                             }
                         });
                         function checkNameValidation(name){
