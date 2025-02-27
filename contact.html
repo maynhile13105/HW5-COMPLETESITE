@@ -60,8 +60,12 @@
                 display: flex;
                 flex-direction: column;
             }
+            label, button{
+                font-size: larger;
+            }
             input{
-                height: 20px;
+                height: 25px;
+                font-size: large;
             }
             .error{
                 font-size: small;
@@ -81,7 +85,11 @@
                 transform: scale(1.5) rotate(-360deg);
                 transition: transform 0.3s ease-in-out;
             }
+            button:hover{
+                font-size: x-large;
+                background-color: antiquewhite;
 
+            }
             @media screen and (max-width: 1200px){
                 .contact-icon{
                     width: 120px
@@ -96,7 +104,7 @@
                     flex-direction: column;
 
                 }
-                h2{
+                h2, button{
                     font-size: medium;
                 }
                 .contact-icon{
@@ -195,9 +203,8 @@
                         </label>
                         <textarea rows="4" cols="35"
                          placeholder="Leave your comment/message here" 
-                         id="comments" name="comments" required>
-                        </textarea>  
-                        
+                         id="comments" name="comments" required></textarea>  
+        
                         <input type="hidden" name="possible_bot" value="true">
                         <output class="error" id="error-name"></output>
                         <output class="error" id="error-email"></output>
