@@ -206,7 +206,7 @@
                          id="comments" name="comments" required></textarea>  
         
                         <input type="hidden" name="possible_bot" value="true">
-                        <output class="error" id="error-label"></output>
+                        <output class="error" id="error-label">ERRORS!</output>
                         <output class="error" id="error-name"></output>
                         <output class="error" id="error-email"></output>
                         <output class="error" id="error-cmt"></output>
@@ -264,7 +264,7 @@
                             if(errors == 0){
                                 form.submit();
                             } else{
-                                errorLabel.style.display="block";
+                                errorLabel.style.display="block";s
                             }
                         });
                         function checkNameValidation(name){
