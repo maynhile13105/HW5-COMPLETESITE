@@ -50,6 +50,15 @@
                 text-align: center;
                 justify-content: space-between;
             }
+            .contact-icon:hover{
+                transform: scale(1.5) rotate(-360deg);
+                transition: transform 0.3s ease-in-out;
+            }
+            button:hover{
+                font-size: x-large;
+                background-color: antiquewhite;
+
+            }
             section a{
                 align-items: center;
             }
@@ -67,11 +76,34 @@
                 height: 25px;
                 font-size: large;
             }
-            .error{
-                font-size: small;
-                color: red;
+            input:user-invalid, textarea:user-invalid{
+                border: 2px solid red;
+            }
+            
+            .error-mess#error-name,
+            .error-mess#error-email,
+            .error-mess#error-cmt {
                 display: none;
             }
+            
+            /* Show error message when an input is invalid */
+            #fullname:user-invalid ~ output .error-mess#error-name,
+            #email:user-invalid ~ output .error-mess#error-email,
+            textarea:user-invalid ~ output .error-mess#error-cmt {
+                display: flex;
+                font-size: small;
+                color: red;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            #fullname:user-valid ~ output .error-mess#error-name,
+            #email:user-valid ~ output .error-mess#error-email,
+            textarea:user-valid ~ output .error-mess#error-cmt {
+                display: none;
+            }
+            
+            
             .information, .note{
                 font-size: small;
                 color: blue;
@@ -81,15 +113,7 @@
             .indicator{
                 color: red;
             }
-            .contact-icon:hover{
-                transform: scale(1.5) rotate(-360deg);
-                transition: transform 0.3s ease-in-out;
-            }
-            button:hover{
-                font-size: x-large;
-                background-color: antiquewhite;
 
-            }
             @media screen and (max-width: 1200px){
                 .contact-icon{
                     width: 120px
@@ -177,14 +201,15 @@
                     <h2>Leave your information and message here!</h2>
                     <p>Uyen will contact you back in 24 hours!</p>
                 </hgroup>
-                <form method="POST" action="https://httpbin.org/post" id="mess-form">
+                <form method="POST" action="https://httpbin.org/post" id="mess-form" novalidate>
                     <fieldset>
                         <legend><strong>Information & Message</strong></legend>
                         <label for="fullname">
                             <b>Full Name</b>
                             <strong class="indicator">*</strong>
                         </label>
-                        <input type="text" name="fullname" id="fullname" required>
+                        <input type="text" name="fullname" id="fullname"
+                            pattern="[A-Za-z]+(?: [A-Za-z]+)+" required>
 
                         <label for="email">
                             <b>Email</b>
@@ -203,20 +228,27 @@
                         </label>
                         <textarea rows="4" cols="35"
                          placeholder="Leave your comment/message here" 
+                         maxlength="1000" minlength="3"
                          id="comments" name="comments" required></textarea>  
         
                         <input type="hidden" name="possible_bot" value="true">
-                        <output class="error" id="error-label">ERRORS!</output>
-                        <output class="error" id="error-name"></output>
-                        <output class="error" id="error-email"></output>
-                        <output class="error" id="error-cmt"></output>
 
+                        <output class="error">
+                            <p class="error-mess" id="error-name"></p>
+                            <p class="error-mess" id="error-email"></p>
+                            <p class="error-mess" id="error-cmt"></p>
+                        </output>
+    
                         <output class="information">
                             <p>Tips:
                                 <br>
-                                - Full name must be "Firstname Lastname"
+                                - Full name must be "Firstname Lastname".
+                                <br>
+                                - Only alphabets are accepted in "Fullname".
                                 <br>
                                 - Valid email format: "id@domain"
+                                <br>
+                                - Comments must have length of 3 to 1000 chars.
                             </p>
                         </output>
                         <button type="submit">Send</button> 
@@ -224,78 +256,11 @@
                             <p>Notes: <strong class="indicator">*</strong> - required Field</p>
                         </span>
                     </fieldset>
-                   
                 </form>
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                    const form = document.getElementById("mess-form");
-                    const inputName = document.getElementById("fullname");
-                    const inputEmail = document.getElementById("email");
-                    const inputMessage = document.getElementById("comments");
-
-                    const errorName = document.getElementById("error-name");
-                    const errorEmail = document.getElementById("error-email");
-                    const errorComment = document.getElementById("error-cmt");
-                    const errorLabel = document.getElementById("error-label");
-
-                    function checkNameValidation(name) {
-                        let pattern = /^[A-Za-z]+(?: [A-Za-z]+)+$/;
-                        return pattern.test(name);
-                    }
-
-                    function validateName() {
-                        if (!checkNameValidation(inputName.value.trim())) {
-                            errorName.textContent = "Please enter your First and Last name!";
-                            errorName.style.display = "block";
-                        } else {
-                            errorName.style.display = "none";
-                        }
-                    }
-
-                    function validateEmail() {
-                        if (inputEmail.validity.typeMismatch || inputEmail.value.trim() === "") {
-                            errorEmail.textContent = "Please enter a valid email!";
-                            errorEmail.style.display = "block";
-                        } else {
-                            errorEmail.style.display = "none";
-                        }
-                    }
-
-                    function validateMessage() {
-                        if (inputMessage.value.trim() === "") {
-                            errorComment.textContent = "No messages or comments are left!";
-                            errorComment.style.display = "block";
-                        } else {
-                            errorComment.style.display = "none";
-                        }
-                    }
-
-                    inputName.addEventListener("input", validateName);
-                    inputEmail.addEventListener("input", validateEmail);
-                    inputMessage.addEventListener("input", validateMessage);
-
-                    form.addEventListener("submit", function(event) {
-                        event.preventDefault();
-                        let errors = 0;
-                        
-                        validateName();
-                        validateEmail();
-                        validateMessage();
-                        
-                        if (errorName.style.display === "block" ||
-                            errorEmail.style.display === "block" ||
-                            errorComment.style.display === "block") {
-                            errorLabel.style.display = "block";
-                        } else {
-                            errorLabel.style.display = "none";
-                            form.submit();
-                        }
-                    });
-                });
-
-                </script>
             </section>
+            <script>
+
+            </script>
         </main>
         <footer>
             <address><b>Give feedbacks via <a href="mailto:maynhile2709@gmail.com">maynhile2709@gmail.com</a></b></address>
