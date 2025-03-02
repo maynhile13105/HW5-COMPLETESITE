@@ -50,6 +50,15 @@
                 text-align: center;
                 justify-content: space-between;
             }
+            .contact-icon:hover{
+                transform: scale(1.5) rotate(-360deg);
+                transition: transform 0.3s ease-in-out;
+            }
+            button:hover{
+                font-size: x-large;
+                background-color: antiquewhite;
+
+            }
             section a{
                 align-items: center;
             }
@@ -71,16 +80,30 @@
                 border: 2px solid red;
             }
             
-            .error{
-                font-size: small;
-                color: red;
+            .error-mess#error-name,
+            .error-mess#error-email,
+            .error-mess#error-cmt {
                 display: none;
             }
-            #fullname:user-invalid ~ #error-name,
-            #email:user-invalid ~ #error-email,
-            textarea:user-invalid ~ #error-cmt{
-                display: block;
+            
+            /* Show error message when an input is invalid */
+            #fullname:user-invalid ~ output .error-mess#error-name,
+            #email:user-invalid ~ output .error-mess#error-email,
+            textarea:user-invalid ~ output .error-mess#error-cmt {
+                display: flex;
+                font-size: small;
+                color: red;
+                flex-direction: column;
+                align-items: center;
             }
+            
+            #fullname:user-valid ~ output .error-mess#error-name,
+            #email:user-valid ~ output .error-mess#error-email,
+            textarea:user-valid ~ output .error-mess#error-cmt {
+                display: none;
+            }
+            
+            
             .information, .note{
                 font-size: small;
                 color: blue;
@@ -90,15 +113,7 @@
             .indicator{
                 color: red;
             }
-            .contact-icon:hover{
-                transform: scale(1.5) rotate(-360deg);
-                transition: transform 0.3s ease-in-out;
-            }
-            button:hover{
-                font-size: x-large;
-                background-color: antiquewhite;
 
-            }
             @media screen and (max-width: 1200px){
                 .contact-icon{
                     width: 120px
@@ -194,7 +209,7 @@
                             <strong class="indicator">*</strong>
                         </label>
                         <input type="text" name="fullname" id="fullname"
-                            pattern="/^[A-Za-z]+(?: [A-Za-z]+)+$/" required>
+                            pattern="[A-Za-z]+(?: [A-Za-z]+)+" required>
 
                         <label for="email">
                             <b>Email</b>
@@ -213,20 +228,34 @@
                         </label>
                         <textarea rows="4" cols="35"
                          placeholder="Leave your comment/message here" 
+                         maxlength="1000" minlength="3"
                          id="comments" name="comments" required></textarea>  
         
                         <input type="hidden" name="possible_bot" value="true">
-                        <output class="error" id="error-label">ERRORS!</output>
-                        <output class="error" id="error-name">Invalid Full name!</output>
-                        <output class="error" id="error-email">Invalid Email!</output>
-                        <output class="error" id="error-cmt">No comment was found!</output>
+
+                        <output class="error">
+                            <p class="error-mess" id="error-name">
+                                Error: Invalid Full name!
+                            </p>
+                            <p class="error-mess" id="error-email">
+                                Error: Invalid Email!
+                            </p>
+                            <p class="error-mess" id="error-cmt">
+                                Error: No valid comment was found!
+                            </p>
+                        </output>
+                        
 
                         <output class="information">
                             <p>Tips:
                                 <br>
-                                - Full name must be "Firstname Lastname"
+                                - Full name must be "Firstname Lastname".
+                                <br>
+                                - Only alphabets are accepted in "Fullname".
                                 <br>
                                 - Valid email format: "id@domain"
+                                <br>
+                                - Comments must have length of 3 to 1000 chars.
                             </p>
                         </output>
                         <button type="submit">Send</button> 
