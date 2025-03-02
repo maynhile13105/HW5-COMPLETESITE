@@ -67,10 +67,19 @@
                 height: 25px;
                 font-size: large;
             }
+            input:user-invalid, textarea:user-invalid{
+                border: 2px solid red;
+            }
+            
             .error{
                 font-size: small;
                 color: red;
                 display: none;
+            }
+            #fullname:user-invalid ~ #error-name,
+            #email:user-invalid ~ #error-email,
+            textarea:user-invalid ~ #error-cmt{
+                display: block;
             }
             .information, .note{
                 font-size: small;
@@ -184,7 +193,8 @@
                             <b>Full Name</b>
                             <strong class="indicator">*</strong>
                         </label>
-                        <input type="text" name="fullname" id="fullname" required>
+                        <input type="text" name="fullname" id="fullname"
+                            pattern="/^[A-Za-z]+(?: [A-Za-z]+)+$/" required>
 
                         <label for="email">
                             <b>Email</b>
@@ -207,9 +217,9 @@
         
                         <input type="hidden" name="possible_bot" value="true">
                         <output class="error" id="error-label">ERRORS!</output>
-                        <output class="error" id="error-name"></output>
-                        <output class="error" id="error-email"></output>
-                        <output class="error" id="error-cmt"></output>
+                        <output class="error" id="error-name">Invalid Full name!</output>
+                        <output class="error" id="error-email">Invalid Email!</output>
+                        <output class="error" id="error-cmt">No comment was found!</output>
 
                         <output class="information">
                             <p>Tips:
@@ -226,75 +236,6 @@
                     </fieldset>
                    
                 </form>
-
-                <script>
-                    document.addEventListener("DOMContentLoaded", function() {
-                    const form = document.getElementById("mess-form");
-                    const inputName = document.getElementById("fullname");
-                    const inputEmail = document.getElementById("email");
-                    const inputMessage = document.getElementById("comments");
-
-                    const errorName = document.getElementById("error-name");
-                    const errorEmail = document.getElementById("error-email");
-                    const errorComment = document.getElementById("error-cmt");
-                    const errorLabel = document.getElementById("error-label");
-
-                    function checkNameValidation(name) {
-                        let pattern = /^[A-Za-z]+(?: [A-Za-z]+)+$/;
-                        return pattern.test(name);
-                    }
-
-                    function validateName() {
-                        if (!checkNameValidation(inputName.value.trim())) {
-                            errorName.textContent = "Please enter your First and Last name!";
-                            errorName.style.display = "block";
-                        } else {
-                            errorName.style.display = "none";
-                        }
-                    }
-
-                    function validateEmail() {
-                        if (inputEmail.validity.typeMismatch || inputEmail.value.trim() === "") {
-                            errorEmail.textContent = "Please enter a valid email!";
-                            errorEmail.style.display = "block";
-                        } else {
-                            errorEmail.style.display = "none";
-                        }
-                    }
-
-                    function validateMessage() {
-                        if (inputMessage.value.trim() === "") {
-                            errorComment.textContent = "No messages or comments are left!";
-                            errorComment.style.display = "block";
-                        } else {
-                            errorComment.style.display = "none";
-                        }
-                    }
-
-                    inputName.addEventListener("input", validateName);
-                    inputEmail.addEventListener("input", validateEmail);
-                    inputMessage.addEventListener("input", validateMessage);
-
-                    form.addEventListener("submit", function(event) {
-                        event.preventDefault();
-                        let errors = 0;
-                        
-                        validateName();
-                        validateEmail();
-                        validateMessage();
-                        
-                        if (errorName.style.display === "block" ||
-                            errorEmail.style.display === "block" ||
-                            errorComment.style.display === "block") {
-                            errorLabel.style.display = "block";
-                        } else {
-                            errorLabel.style.display = "none";
-                            form.submit();
-                        }
-                    });
-                });
-
-                </script>
             </section>
         </main>
         <footer>
