@@ -324,6 +324,7 @@
                 </form>
             </section>
             <script>
+                const isError = 0;
                 const fullname = document.getElementById("fullname");
                 const email = document.getElementById("email");
                 const comment = document.getElementById("comments");
@@ -367,6 +368,9 @@
                 
                 form.addEventListener("submit", (event) => {
                     errors.value = JSON.stringify(form_errors);
+                    if(isError){
+                        event.preventDefault();
+                    }
                 })
 
 
@@ -385,6 +389,7 @@
                         name_tip.textContent = "";
                         name_tip.style.display = "none";
                     } else{
+                        isError = 1;
                         showNameError();
                     }
                 });
@@ -397,6 +402,7 @@
                         email_error.style.display = "none";
                         email_tip.style.display = "none";
                     } else{
+                        isError = 1;
                         showEmailError();
                     }
                 });
@@ -421,6 +427,7 @@
                             cmmt_tip.textContent = "Tips: Length of comment must be between "+
                                     comment.minLength +" and " + comment.maxLength +".";
                             cmmt_tip.style.display = "flex";
+                            isError = 1;
                             pushError("Comments", "Not enough required lenght");
                             setTimeout(() => {
                                 cmmt_error.textContent = "";
