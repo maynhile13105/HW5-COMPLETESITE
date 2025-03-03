@@ -437,33 +437,44 @@
                         cmmt_tip.textContent = "";
                         cmmt_tip.style.display = "none";
 
-                        if(comment.value.length < comment.minLength){
-                            cmmt_error.textContent = "Error: Comment does not have enough required characters!";
+                        if(remaining === comment.maxLength){
+                            cmmt_error.textContent = "Error: Missing comment!";
                             cmmt_error.style.display = "flex";
                             cmmt_tip.textContent = "Tips: Length of comment must be between "+
-                                    comment.minLength +" and " + comment.maxLength +".";
+                                        comment.minLength +" and " + comment.maxLength +".";
                             cmmt_tip.style.display = "flex";
-                            isError = 1;
-                            pushError("Comments", "Not enough required lenght");
-                            setTimeout(() => {
-                                cmmt_error.textContent = "";
-                            }, 5000);
-
-                        }
-                        cmt_ann.style.display = "flex";
-                        if (remaining == 0){
-                            cmt_ann.textContent = "You reach the limit characters!";
-                            cmt_ann.style.backgroundColor = "lightpink";
-
-                        } else if (remaining < 10){
-                            cmt_ann.textContent = "Danger! Only " + remaining + " characters left!";
-                            cmt_ann.style.backgroundColor = "lightpink";
-                        } else if(remaining < 30){
-                            cmt_ann.textContent = "Warning: " + remaining + " characters left!";
-                            cmt_ann.style.backgroundColor = "yellow";
                         } else{
-                            cmt_ann.textContent = remaining + " characters left!";
-                            cmt_ann.style.backgroundColor = "transparent";
+
+                        
+
+                            if(comment.value.length < comment.minLength){
+                                cmmt_error.textContent = "Error: Comment does not have enough required characters!";
+                                cmmt_error.style.display = "flex";
+                                cmmt_tip.textContent = "Tips: Length of comment must be between "+
+                                        comment.minLength +" and " + comment.maxLength +".";
+                                cmmt_tip.style.display = "flex";
+                                isError = 1;
+                                pushError("Comments", "Not enough required lenght");
+                                setTimeout(() => {
+                                    cmmt_error.textContent = "";
+                                }, 5000);
+
+                            }
+                            cmt_ann.style.display = "flex";
+                            if (remaining == 0){
+                                cmt_ann.textContent = "You reach the limit characters!";
+                                cmt_ann.style.backgroundColor = "lightpink";
+
+                            } else if (remaining < 10){
+                                cmt_ann.textContent = "Danger! Only " + remaining + " characters left!";
+                                cmt_ann.style.backgroundColor = "lightpink";
+                            } else if(remaining < 30){
+                                cmt_ann.textContent = "Warning: " + remaining + " characters left!";
+                                cmt_ann.style.backgroundColor = "yellow";
+                            } else{
+                                cmt_ann.textContent = remaining + " characters left!";
+                                cmt_ann.style.backgroundColor = "transparent";
+                            }
                         }
                     }
                     
