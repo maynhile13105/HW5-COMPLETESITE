@@ -240,6 +240,7 @@
                         <output class="announcement" id="ann-cmt"></output>
         
                         <input type="hidden" name="possible_bot" value="true">
+                        <input type="hidden" name="form_errors" id="form_errors">
 
                         <output class="error">
                             <p class="error-mess" id="error-name"></p>
@@ -272,6 +273,22 @@
                 const email_tip = document.getElementById("info-email");
                 const cmmt_tip = document.getElementById("info-cmt");
 
+                const form_errors = [];
+                const errors = document.getElementById("form_errors");
+                const form = document.querySelector("form");
+                
+                form.addEventListener("submit", (event) => {
+                    errors.value = JSON.stringify(form_errors);
+                })
+
+
+                function pushError(field, error){
+                    const exists = form_errors.some(err => err.field === field && err.error === error);
+
+                    if (!exists) {
+                        form_errors.push({ field, error });
+                    }
+                };
 
                 fullname.addEventListener("input", (event) => {
                     if(fullname.validity.valid){
@@ -316,6 +333,7 @@
                             cmmt_tip.textContent = "Tips: Length of comment must be between "+
                                     comment.minLength +" and " + comment.maxLength +".";
                             cmmt_tip.style.display = "flex";
+                            pushError("Comments", "Not enough required lenght");
                             setTimeout(() => {
                                 cmmt_error.textContent = "";
                             }, 5000);
@@ -348,6 +366,7 @@
                     if (fullNameValue === "") {
                         name_error.textContent = "Error: Missing Fullname!\n";
                         name_error.style.display = "flex";
+                        pushError("fullname", "Missing value");
                         setTimeout(() => {
                             name_error.textContent = "";
                         }, 5000);
@@ -362,6 +381,7 @@
                         name_tip.textContent =  "Tips: Full name contains only alphabets and spaces!";
                         name_tip.style.display = "flex";
                         name_error.style.display = "flex";
+                        pushError("fullname", "Consists unexpected characters");
                         setTimeout(() => {
                             name_error.textContent = "";
                         }, 5000);
@@ -373,6 +393,7 @@
                         name_tip.textContent = "Tips: Full name must have both 'Firstname' and 'Lastname'.";
                         name_tip.style.display = "flex";
                         name_error.style.display = "flex";
+                        pushError("fullname", "Not in form of \"Firstname Lastname\"");
                         setTimeout(() => {
                             name_error.textContent = "";
                         }, 5000)
@@ -382,10 +403,13 @@
                 function showEmailError(){
                     if(email.validity.valueMissing){
                         email_error.textContent = "Error: Missing Email!";
+                        pushError("email", "Missing value");
+
                     } else if(email.validity.typeMismatch){
                         email_error.textContent = "Error: Invalid values! Entered value is not an email.";
                         email_tip.textContent= "Tips: Valid email format: \"id@domain\"";
                         email_tip.style.display = "flex";
+                        pushError("email", "not in form of \"id@domain\"");
                     }
                     email_error.style.display = "flex";
                     setTimeout(() => {
