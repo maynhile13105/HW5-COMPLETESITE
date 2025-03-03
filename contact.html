@@ -80,22 +80,13 @@
                 border: 2px solid red;
             }
             
-            .error-mess#error-name,
-            .error-mess#error-email,
-            .error-mess#error-cmt {
-                display: none;
-            }
-            
-            /* Show error message when an input is invalid */
-            #fullname:user-invalid ~ output .error-mess#error-name,
-            #email:user-invalid ~ output .error-mess#error-email,
-            textarea:user-invalid ~ output .error-mess#error-cmt {
-                display: flex;
-                font-size: small;
+            .error-mess{
+                font-size: medium;
                 color: red;
-                flex-direction: column;
-                align-items: center;
+                display: hidden;
             }
+
+            
             
             #fullname:user-valid ~ output .error-mess#error-name,
             #email:user-valid ~ output .error-mess#error-email,
@@ -105,9 +96,9 @@
             
             
             .information, .note{
-                font-size: small;
+                font-size: medium;
                 color: blue;
-                display: flex; 
+                display: hidden; 
                 justify-content: center;
             }
             .indicator{
@@ -228,7 +219,7 @@
                         </label>
                         <textarea rows="4" cols="35"
                          placeholder="Leave your comment/message here" 
-                         maxlength="1000" minlength="3"
+                         maxlength="500" minlength="3"
                          id="comments" name="comments" required></textarea>  
         
                         <input type="hidden" name="possible_bot" value="true">
@@ -240,16 +231,9 @@
                         </output>
     
                         <output class="information">
-                            <p>Tips:
-                                <br>
-                                - Full name must be "Firstname Lastname".
-                                <br>
-                                - Only alphabets are accepted in "Fullname".
-                                <br>
-                                - Valid email format: "id@domain"
-                                <br>
-                                - Comments must have length of 3 to 1000 chars.
-                            </p>
+                            <p class="info-mess" id="info-name"></p>
+                            <p class="info-mess" id="info-email"></p>
+                            <p class="info-mess" id="info-cmt"></p>
                         </output>
                         <button type="submit">Send</button> 
                         <span class="note" >
@@ -259,6 +243,126 @@
                 </form>
             </section>
             <script>
+                const fullname = document.getElementById("fullname");
+                const email = document.getElementById("email");
+                const comment = document.getElementById("comments");
+
+                const name_error = document.getElementById("error-name");
+                const email_error = document.getElementById("error-email");
+                const cmmt_error = document.getElementById("error-cmt");
+
+                const name_tip = document.getElementById("info-name");
+                const email_tip = document.getElementById("info-email");
+                const cmmt_tip = document.getElementById("info-cmt");
+
+
+                fullname.addEventListener("input", (event) => {
+                    if(fullname.validity.valid){
+                        name_error.textContent = "";
+                        name_error.style.display = "hidden";
+                        name_tip.textContent = "";
+                        name_tip.style.display = "hidden";
+                    } else{
+                        showNameError();
+                    }
+                });
+
+                email.addEventListener("input", (event) => {
+                    if(email.validity.valid){
+                        email_error.textContent="";
+                        email_tip.textContent = "";
+
+                        email_error.style.display = "hidden";
+                        email_tip.style.display = "hidden";
+                    } else{
+                        showEmailError();
+                    }
+                });
+
+                comment.addEventListener("input", (event) => {
+                    const total = comment.maxLength;
+                    const remaining = total - comment.value.length;
+                    cmmt_tip.textContent = "";
+                    cmmt_tip.style.fontSize = "medium";
+                    cmmt_tip.style.backgroundColor = "transparent";
+                    
+                    if(remaining >= 0){
+                        cmmt_tip.textContent = "Warning: " + remaining + " characters left!";
+                        cmmt_error.textContent = "";
+                        cmmt_error.style.display = "none";
+                        if (remaining <= 10){
+                            cmmt_tip.style.backgroundColor = "lightpink";
+                        } else if(remaining < 30){
+                            cmmt_tip.style.backgroundColor = "yellow";
+                        } else{
+                            cmmt_tip.style.backgroundColor = "transparent";
+                        }
+                    } else {
+                        cmmt_error.textContent = "Error: Out of limit characters!";
+                        cmmt_error.style.display = "block";
+                        let over = -remaining;
+                        cmmt_tip.textContent = "Tips: Remove " + over + " characters!";
+                        setTimeout(() => {
+                            cmmt_error.textContent = "";
+                            cmmt_error.style.display = "none";
+                        }, 5000);
+                    }
+                    
+                });
+
+                function showNameError(){
+                    const fullNameValue = fullname.value.trim(); // Trim whitespace
+                    const pattern1 = /^[A-Za-z]+(?: [A-Za-z]+)+$/; // Ensures at least two words
+                    const pattern2 = /[^A-Za-z ]/; // Checks for numbers/symbols
+
+                    if (fullNameValue === "") {
+                        name_error.textContent = "Error: Missing Fullname!\n";
+                        name_error.style.display = "block";
+                        setTimeout(() => {
+                            name_error.textContent = "";
+                        }, 5000);
+                        return;
+                    }
+
+                    const invalidCharsPattern = /[^A-Za-z ]/; // Checks for numbers/symbols
+                    const nameStructurePattern = /^[A-Za-z]+ [A-Za-z]+$/; // Ensures exactly two words
+
+                    if (invalidCharsPattern.test(fullNameValue)) { 
+                        name_error.textContent = "Error: Full name contains invalid characters!\n";
+                        name_tip.textContent =  "Tips: Full name contains only alphabets and spaces!";
+                        name_tip.style.display = "block";
+                        name_error.style.display = "block";
+                        setTimeout(() => {
+                            name_error.textContent = "";
+                        }, 5000);
+                        return; 
+                    } 
+
+                    if (!nameStructurePattern.test(fullNameValue)) { 
+                        name_error.textContent = "Error: Invalid Full name!\n";
+                        name_tip.textContent = "Tips: Full name must have both 'Firstname' and 'Lastname'.";
+                        name_tip.style.display = "block";
+                        name_error.style.display = "block";
+                        setTimeout(() => {
+                            name_error.textContent = "";
+                        }, 5000)
+                    }
+                };
+
+                function showEmailError(){
+                    if(email.validity.valueMissing){
+                        email_error.textContent = "Error: Missing Email!";
+                    } else if(email.validity.typeMismatch){
+                        email_error.textContent = "Error: Invalid values! Entered value is not an email.";
+                        email_tip.textContent= "Tips: Valid email format: \"id@domain\"";
+                        email_tip.style.display = "block";
+                    }
+                    email_error.style.display = "block";
+                };
+
+                function showCommentError(){
+
+                }
 
             </script>
         </main>
