@@ -116,6 +116,7 @@
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
+
             }
             .indicator{
                 color: red;
@@ -154,6 +155,44 @@
             }      
 
         </style>
+        <noscript>
+            <p style="text-align: center; border: 1px black solid; background-color: beige;">
+                Your browser does not support JavaScript!
+                <br>
+                Enable it or Change the browser to use full options!
+            </p>
+            <style>
+                #theme {
+                    pointer-events: none; 
+                    cursor: not-allowed;
+                    display: none;
+                }
+                
+                .error-mess#error-name,
+                .error-mess#error-email,
+                .error-mess#error-cmt {
+                    display: none;
+                }
+                
+                /* Show error message when an input is invalid */
+                #fullname:user-invalid ~ output .error-mess#error-name,
+                #email:user-invalid ~ output .error-mess#error-email,
+                textarea:user-invalid ~ output .error-mess#error-cmt {
+                    display: flex;
+                    font-size: small;
+                    color: red;
+                    flex-direction: column;
+                    align-items: center;
+                }
+                .information > p {
+                    display: none;
+                }
+                .information {
+                    color: navy;
+                }
+            </style>
+        </noscript>
+
     </head>
     <body>
         <header>
@@ -212,7 +251,7 @@
                     <h2>Leave your information and message here!</h2>
                     <p>Uyen will contact you back in 24 hours!</p>
                 </hgroup>
-                <form method="POST" action="https://httpbin.org/post" id="mess-form" novalidate>
+                <form method="POST" action="https://httpbin.org/post" id="mess-form">
                     <fieldset>
                         <legend><strong>Information & Message</strong></legend>
                         <label for="fullname">
@@ -246,13 +285,33 @@
                         <input type="hidden" name="possible_bot" value="true">
                         <input type="hidden" name="form_errors" id="form_errors">
 
-                        <output class="error">
-                            <p class="error-mess" id="error-name"></p>
-                            <p class="error-mess" id="error-email"></p>
-                            <p class="error-mess" id="error-cmt"></p>
-                        </output>
     
+                        <output class="error">
+                            <p class="error-mess" id="error-name">
+                                Error: Invalid Full name!
+                            </p>
+                            <p class="error-mess" id="error-email">
+                                Error: Invalid Email!
+                            </p>
+                            <p class="error-mess" id="error-cmt">
+                                Error: No valid comment was found!
+                            </p>
+                        </output>
+
                         <output class="information">
+                            <noscript>
+                                <p id="mess-noscript">
+                                    Tips:
+                                    <br>
+                                    - Full name must be "Firstname Lastname".
+                                    <br>
+                                    - Only alphabets and space are accepted in "Fullname".
+                                    <br>
+                                    - Valid email format: "id@domain"
+                                    <br>
+                                    - Comments must have length of 3 to 500 chars.
+                                </p>
+                            </noscript>
                             <p class="info-mess" id="info-name"></p>
                             <p class="info-mess" id="info-email"></p>
                             <p class="info-mess" id="info-cmt"></p>
