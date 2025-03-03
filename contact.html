@@ -83,14 +83,29 @@
             .error-mess{
                 font-size: medium;
                 color: red;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
                 display: hidden;
             }
 
+            .announcement{
+                font-size: medium;
+                text-decoration: underline ;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                display: hidden;
+                color: blue;
+            }
             
             
             #fullname:user-valid ~ output .error-mess#error-name,
             #email:user-valid ~ output .error-mess#error-email,
-            textarea:user-valid ~ output .error-mess#error-cmt {
+            textarea:user-valid ~ output .error-mess#error-cmt,
+            #fullname:user-valid ~ output .info-mess#info-name,
+            #email:user-valid ~ output .info-mess#info-email,
+            textarea:user-valid ~ output .info-mess#info-cmt{
                 display: none;
             }
             
@@ -98,8 +113,9 @@
             .information, .note{
                 font-size: medium;
                 color: blue;
-                display: hidden; 
                 justify-content: center;
+                align-items: center;
+                flex-direction: column;
             }
             .indicator{
                 color: red;
@@ -220,7 +236,8 @@
                         <textarea rows="4" cols="35"
                          placeholder="Leave your comment/message here" 
                          maxlength="500" minlength="3"
-                         id="comments" name="comments" required></textarea>  
+                         id="comments" name="comments" required></textarea> 
+                        <output class="announcement" id="ann-cmt"></output>
         
                         <input type="hidden" name="possible_bot" value="true">
 
@@ -280,32 +297,45 @@
                 });
 
                 comment.addEventListener("input", (event) => {
+                    const cmt_ann = document.getElementById("ann-cmt");
                     const total = comment.maxLength;
                     const remaining = total - comment.value.length;
-                    cmmt_tip.textContent = "";
-                    cmmt_tip.style.fontSize = "medium";
-                    cmmt_tip.style.backgroundColor = "transparent";
+                    cmt_ann.textContent = "";
+                    cmt_ann.style.fontSize = "medium";
+                    cmt_ann.style.backgroundColor = "transparent";
                     
                     if(remaining >= 0){
-                        cmmt_tip.textContent = "Warning: " + remaining + " characters left!";
                         cmmt_error.textContent = "";
-                        cmmt_error.style.display = "none";
-                        if (remaining <= 10){
-                            cmmt_tip.style.backgroundColor = "lightpink";
-                        } else if(remaining < 30){
-                            cmmt_tip.style.backgroundColor = "yellow";
-                        } else{
-                            cmmt_tip.style.backgroundColor = "transparent";
+                        cmmt_error.style.display = "hidden";
+                        cmmt_tip.textContent = "";
+                        cmmt_tip.style.display = "hidden";
+
+                        if(comment.value.length < comment.minLength){
+                            cmmt_error.textContent = "Error: Comment does not have enough required characters!";
+                            cmmt_error.style.display = "flex";
+                            cmmt_tip.textContent = "Tips: Length of comment must be between "+
+                                    comment.minLength +" and " + comment.maxLength +".";
+                            cmmt_tip.style.display = "flex";
+                            setTimeout(() => {
+                                cmmt_error.textContent = "";
+                            }, 5000);
+
                         }
-                    } else {
-                        cmmt_error.textContent = "Error: Out of limit characters!";
-                        cmmt_error.style.display = "block";
-                        let over = -remaining;
-                        cmmt_tip.textContent = "Tips: Remove " + over + " characters!";
-                        setTimeout(() => {
-                            cmmt_error.textContent = "";
-                            cmmt_error.style.display = "none";
-                        }, 5000);
+                        cmt_ann.style.display = "flex";
+                        if (remaining == 0){
+                            cmt_ann.textContent = "You reach the limit characters!";
+                            cmt_ann.style.backgroundColor = "lightpink";
+
+                        } else if (remaining < 10){
+                            cmt_ann.textContent = "Danger! Only " + remaining + " characters left!";
+                            cmt_ann.style.backgroundColor = "lightpink";
+                        } else if(remaining < 30){
+                            cmt_ann.textContent = "Warning: " + remaining + " characters left!";
+                            cmt_ann.style.backgroundColor = "yellow";
+                        } else{
+                            cmt_ann.textContent = remaining + " characters left!";
+                            cmt_ann.style.backgroundColor = "transparent";
+                        }
                     }
                     
                 });
@@ -317,7 +347,7 @@
 
                     if (fullNameValue === "") {
                         name_error.textContent = "Error: Missing Fullname!\n";
-                        name_error.style.display = "block";
+                        name_error.style.display = "flex";
                         setTimeout(() => {
                             name_error.textContent = "";
                         }, 5000);
@@ -330,8 +360,8 @@
                     if (invalidCharsPattern.test(fullNameValue)) { 
                         name_error.textContent = "Error: Full name contains invalid characters!\n";
                         name_tip.textContent =  "Tips: Full name contains only alphabets and spaces!";
-                        name_tip.style.display = "block";
-                        name_error.style.display = "block";
+                        name_tip.style.display = "flex";
+                        name_error.style.display = "flex";
                         setTimeout(() => {
                             name_error.textContent = "";
                         }, 5000);
@@ -341,8 +371,8 @@
                     if (!nameStructurePattern.test(fullNameValue)) { 
                         name_error.textContent = "Error: Invalid Full name!\n";
                         name_tip.textContent = "Tips: Full name must have both 'Firstname' and 'Lastname'.";
-                        name_tip.style.display = "block";
-                        name_error.style.display = "block";
+                        name_tip.style.display = "flex";
+                        name_error.style.display = "flex";
                         setTimeout(() => {
                             name_error.textContent = "";
                         }, 5000)
@@ -355,14 +385,13 @@
                     } else if(email.validity.typeMismatch){
                         email_error.textContent = "Error: Invalid values! Entered value is not an email.";
                         email_tip.textContent= "Tips: Valid email format: \"id@domain\"";
-                        email_tip.style.display = "block";
+                        email_tip.style.display = "flex";
                     }
-                    email_error.style.display = "block";
+                    email_error.style.display = "flex";
+                    setTimeout(() => {
+                        email_error.textContent = "";
+                    }, 5000);
                 };
-
-                function showCommentError(){
-
-                }
 
             </script>
         </main>
