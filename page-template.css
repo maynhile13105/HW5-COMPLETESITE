@@ -3,6 +3,25 @@
     --aside-width: 10dvw;
     --linear-background: linear-gradient(180deg, #4bb4de, #f6e2bc);
 }
+
+[theme='Daylight']{
+    --linear-background: linear-gradient(180deg, #4bb4de, #f6e2bc);
+    --header-color: navy;
+    --font-color: black;
+    --input-background-color: white;
+    --tip-color: navy;
+    --nav-background: transparent;
+}
+[theme='Nightlight']{
+    --linear-background: linear-gradient(180deg, #062651, #073f89);
+    --header-color: white;
+    --font-color: white;
+    --input-background-color: lightgrey;
+    --tip-color: yellow;
+    --nav-background: lightsteelblue;
+}
+
+
 html {
     overflow: auto; 
 }
@@ -16,16 +35,12 @@ body{
     font-weight: bold;
     font-size: large;
     overflow-y: scroll;
-}
-aside{
-    height: 100vh;
-    width: var(--aside-width, 10dvw);
-    position: fixed;
-    z-index: 1000;
+    color: var(--font-color);
+    
 }
 header h1{
     font-size: 45px;
-    color: darkblue;
+    color: var(--header-color);
     text-shadow: 0 0 5px yellow, 
                 0 0 10px yellow, 
                 0 0 15px lightgoldenrodyellow;
@@ -33,7 +48,6 @@ header h1{
 header{
     width: 100%;
     height: var(--header-height, 10dvh);
-    margin-top: 10px;
 }
 
 main {
@@ -51,25 +65,34 @@ footer {
     border-top: 1px solid navy;
 }
 
-a{
+a, .theme{
     text-decoration: none;
+    color: var(--font-color);
 }
 nav img{
     width: 50px;
 }
+
 nav{
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
-    height: 50vh;
     font-size: large;
+    background-color: var(--nav-background);
+    padding: 10px;
 }
+
 p{
     text-align: justify;
 }
-nav a:hover{
+nav a:hover, nav button:hover{
     transform: scale(1.4);
     transition: transform 0.3s ease-in-out;
+    background-color: transparent;
+}
+button.theme{
+    background-color: transparent;
+    border: none;    
 }
 @media screen and (max-width: 1500px){
     footer{

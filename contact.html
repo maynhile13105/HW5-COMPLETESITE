@@ -86,7 +86,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                display: hidden;
+                display: none;
             }
 
             .announcement{
@@ -95,7 +95,7 @@
                 flex-direction: column;
                 justify-content: center;
                 align-items: center;
-                display: hidden;
+                display: none;
                 color: blue;
             }
             
@@ -112,7 +112,7 @@
             
             .information, .note{
                 font-size: medium;
-                color: blue;
+                color: var(--tip-color);
                 justify-content: center;
                 align-items: center;
                 flex-direction: column;
@@ -174,6 +174,10 @@
                     <img src="/images/project-icon.svg" alt="project-icon">
                     <i>Projects</i>
                 </a>
+                <button type="button" class="theme" id="theme">
+                    <img src="/images/day-icon.svg" alt="day-icon" id="theme-icon">
+                    <i id="theme-label">Daylight</i>
+                </button>
             </nav>
             <h1>CONTACT</h1>
         </header>
@@ -186,9 +190,9 @@
                 <a href="https://www.instagram.com/nnnnnhi_/">
                     <img src="/images/insta-icon.svg" alt="Instagram icon" class="contact-icon">        
                 </a>
-                    <a href="https://www.linkedin.com/in/maynhile13105/">
-                        <img src="/images/linkedin-icon.svg" alt="Linkedin icon" class="contact-icon">
-                    </a>
+                <a href="https://www.linkedin.com/in/maynhile13105/">
+                    <img src="/images/linkedin-icon.svg" alt="Linkedin icon" class="contact-icon">
+                </a>
             </section>
             <div class="divider"><strong><i>Or</i></strong></div>
             <section>
@@ -276,6 +280,31 @@
                 const form_errors = [];
                 const errors = document.getElementById("form_errors");
                 const form = document.querySelector("form");
+
+                const theme_toggle_button = document.getElementById("theme");
+                const theme_label = document.getElementById("theme-label");
+                const theme_icon = document.getElementById("theme-icon");
+                const current_theme = localStorage.getItem("theme");
+                document.documentElement.setAttribute('theme', current_theme);
+                theme_label.textContent = current_theme === "Daylight"? "Daylight" : "Nightlight";
+
+                theme_toggle_button.addEventListener("click", (event) => {
+                    const theme = document.documentElement.getAttribute('theme');
+                    if(theme === "Daylight"){
+                        document.documentElement.setAttribute("theme", "Nightlight");
+                        localStorage.setItem("theme", "Nightlight");
+                        theme_label.textContent= "Nightlight";
+                        theme_icon.setAttribute("src", "/images/night-icon.svg");
+                        theme_icon.setAttribute("alt", "night-icon");
+
+                    } else {
+                        document.documentElement.setAttribute("theme", "Daylight");
+                        localStorage.setItem("theme", "Daylight");
+                        theme_label.textContent= "Daylight";
+                        theme_icon.setAttribute("src", "/images/day-icon.svg");
+                        theme_icon.setAttribute("alt", "day-icon");
+                    }
+                })
                 
                 form.addEventListener("submit", (event) => {
                     errors.value = JSON.stringify(form_errors);
@@ -293,9 +322,9 @@
                 fullname.addEventListener("input", (event) => {
                     if(fullname.validity.valid){
                         name_error.textContent = "";
-                        name_error.style.display = "hidden";
+                        name_error.style.display = "none";
                         name_tip.textContent = "";
-                        name_tip.style.display = "hidden";
+                        name_tip.style.display = "none";
                     } else{
                         showNameError();
                     }
@@ -306,8 +335,8 @@
                         email_error.textContent="";
                         email_tip.textContent = "";
 
-                        email_error.style.display = "hidden";
-                        email_tip.style.display = "hidden";
+                        email_error.style.display = "none";
+                        email_tip.style.display = "none";
                     } else{
                         showEmailError();
                     }
@@ -323,9 +352,9 @@
                     
                     if(remaining >= 0){
                         cmmt_error.textContent = "";
-                        cmmt_error.style.display = "hidden";
+                        cmmt_error.style.display = "none";
                         cmmt_tip.textContent = "";
-                        cmmt_tip.style.display = "hidden";
+                        cmmt_tip.style.display = "none";
 
                         if(comment.value.length < comment.minLength){
                             cmmt_error.textContent = "Error: Comment does not have enough required characters!";
