@@ -324,7 +324,6 @@
                 </form>
             </section>
             <script>
-                let isError = 0;
                 const fullname = document.getElementById("fullname");
                 const email = document.getElementById("email");
                 const comment = document.getElementById("comments");
@@ -368,6 +367,23 @@
                 
                 form.addEventListener("submit", (event) => {
                     errors.value = JSON.stringify(form_errors);
+                    let isError = 0;
+
+                    if (!fullname.validity.valid) {
+                        isError = 1;
+                        showNameError();
+                    }
+
+                    if (!email.validity.valid) {
+                        isError = 1;
+                        showEmailError();
+                    }
+
+                    if (comment.value.length < comment.minLength) {
+                        isError = 1;
+                        cmmt_error.textContent = "Error: Comment does not have enough required characters!";
+                        cmmt_error.style.display = "flex";
+                    }
                     if(isError){
                         event.preventDefault();
                     }
