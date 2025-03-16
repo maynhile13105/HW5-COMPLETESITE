@@ -1,0 +1,58 @@
+{
+    "project-cards": [
+        
+        {
+            "title": "Machine Learning: Car-accident Prediction",
+            "type": "Team project",
+            "description": "Build three different models to predict the likelihood of personal injury based on accident details.",
+            "language": "Python",
+            "link": "https://github.com/devPach4545/CSE_151A",
+            "result": "/images/project/ml.png"
+        },
+        
+        {
+            "title": "AI: Probabiblistic Agents",
+            "type": "Team project",
+            "description": "Build three different models for agent that suggest the trading action (buy/hold/sell).",
+            "language": "Python",
+            "link": "https://github.com/maynhile13105/AI-Probabilistic-Model",
+            "result": "/images/project/ai.png"
+        },
+
+        {
+            "title": "NFA-to-DFA Converter",
+            "type": "Individual project",
+            "description": "Build a Converter so that it takes as input a representation of an NFA over an alphabet and outputs a representation of a DFA over this alphabet that recognizes the same language.",
+            "language": "Python",
+            "link": "https://colab.research.google.com/drive/147gMKBNlvKAFUPJBCjj3M-ZCRcL1zp_6?usp=sharing",
+            "result": "/images/project/nfa-dfa.png"
+        },
+        
+        {
+            "title": "Huffman Coding",
+            "type": "Individual project",
+            "description": " Implement two programs: compress file and uncompress file.",
+            "language": "C++",
+            "link": "https://github.com/maynhile13105/NoCode",
+            "result": "/images/project/hc.png"
+        },
+
+        {
+            "title": "Graphs",
+            "type": "Individual project",
+            "description": "Implement a class to represent graphs. Users can find an unweighted shortest path, a weighted shortest path, connected components and the smallest connecting threshold.",
+            "language": "C++",
+            "link": "https://github.com/maynhile13105/NoCode",
+            "result": "/images/project/g.png"
+        },
+
+        {
+            "title": "Game: Treasure Hunt",
+            "type": "Individual project",
+            "description": "Implement the game 'Treasure Hunt'",
+            "language": "Java",
+            "link": "https://github.com/maynhile13105/NoCode",
+            "result": "/images/project/th.jpg"
+        }
+    ]
+}

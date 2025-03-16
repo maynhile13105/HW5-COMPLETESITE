@@ -11,8 +11,7 @@ class ProjectComponent extends HTMLElement{
                     padding: 15px;
                     margin: 10px;
                     background: #fdebcc;
-                    box-shadow: 2px 2px 10px yellow);
-                    
+                    box-shadow: 2px 2px 10px yellow;
                 }
                 img {
                     max-width: 100%;
@@ -52,8 +51,21 @@ class ProjectComponent extends HTMLElement{
 
 customElements.define("project-card", ProjectComponent);
 
+function loadProject(data, projectsContainer){
+    const projCard = document.createElement("project-card");
+    projCard.setAttribute("title", data.title);
+    projCard.setAttribute("type", data.type);
+    projCard.setAttribute("language", data.language);
+    projCard.setAttribute("description", data.description);
+    projCard.setAttribute("link", data.link);
+    projCard.setAttribute("result", data.result);
 
-document.addEventListener("DOMContentLoaded", async () => {
+    projectsContainer.appendChild(projCard);
+
+}
+
+document.getElementById("local-storage").addEventListener("click", async () => {
+
     const projectsContainer = document.querySelector("main");
 
     // Check if data exists in localStorage
@@ -74,26 +86,21 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     // Populate project cards
     localData["project-cards"].forEach((proj) => {
-        const projCard = document.createElement("project-card");
-        projCard.setAttribute("title", proj.title);
-        projCard.setAttribute("type", proj.type);
-        projCard.setAttribute("language", proj.language);
-        projCard.setAttribute("description", proj.description);
-        projCard.setAttribute("link", proj.link);
-        projCard.setAttribute("result", proj.result);
-
-        projectsContainer.appendChild(projCard);
+        loadProject(proj, projectsContainer);
     });
 });
 
-document.getElementById("local-storage").addEventListener("click", async () => {
-    try {
-        const response = await fetch("projects.json");
-        const projectData = await response.json();
-        localStorage.setItem("projects", JSON.stringify(projectData));
-        location.reload();
-    } catch (error) {
-        console.error("Error refreshing project data:", error);
+
+document.addEventListener("DOMContentLoaded", async () => {
+    if (!localStorage.getItem("projects")) {
+        try {
+            const response = await fetch("project-info.json");
+            const projectData = await response.json();
+            localStorage.setItem("projects", JSON.stringify(projectData));
+            location.reload();  // Reload just once, on first load
+        } catch (error) {
+            console.error("Error loading project data:", error);
+        }
     }
 });
 
