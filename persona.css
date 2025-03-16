@@ -25,7 +25,18 @@ section{
     padding: 0px 5px 5px 5px;
     max-height: calc((650px - var(--header-height)) * 3 / 4);
     min-height: calc((650px - var(--header-height)) * 3 / 4);
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+section:hover {
+    position: relative;
+    z-index: 10;
+    transform: scale(1.25);
+}
+main:hover section:not(:hover) {
+    filter: blur(5px);
+}
+
 
 .column:nth-child(2) section:nth-child(1) p{
     padding: 0px 20px;
