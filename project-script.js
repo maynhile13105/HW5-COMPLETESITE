@@ -12,6 +12,8 @@ class ProjectComponent extends HTMLElement{
                     margin: 10px;
                     background: #fdebcc;
                     box-shadow: 2px 2px 10px yellow;
+                    display: flex;
+                    flex-direction: column
                 }
                 img {
                     max-width: 100%;
@@ -66,15 +68,16 @@ function loadProject(data, projectsContainer){
 
 document.getElementById("local-storage").addEventListener("click", async () => {
 
-    const projectsContainer = document.querySelector("main");
+    const projectsContainer = document.getElementById("projects-container");
+    projectsContainer.innerHTML="";
 
     let localData = localStorage.getItem("projects");
 
     if (!localData) {
         try {
-            const response = await fetch("project-info.json"); // Fetch JSON from the file
+            const response = await fetch("project-info.json"); 
             localData = await response.json();
-            localStorage.setItem("projects", JSON.stringify(localData)); // Store in localStorage
+            localStorage.setItem("projects", JSON.stringify(localData)); 
         } catch (error) {
             console.error("Error loading project data:", error);
             return;
@@ -86,11 +89,15 @@ document.getElementById("local-storage").addEventListener("click", async () => {
     localData["project-cards"].forEach((proj) => {
         loadProject(proj, projectsContainer);
     });
+
+    const announcement = document.getElementById("announcement-box");
+    announcement.textContent = "Data is loaded from Local Storage!"
+
 });
 
 document.getElementById("remote-storage").addEventListener("click", async () => {
 
-    const projectsContainer = document.querySelector("main");
+    const projectsContainer = document.getElementById("projects-container");
     projectsContainer.innerHTML = "";
     try{
         const response = await fetch("https://my-json-server.typicode.com/maynhile13105/HW5-COMPLETESITE/db");
@@ -100,27 +107,19 @@ document.getElementById("remote-storage").addEventListener("click", async () => 
         remoteData["project-cards"].forEach((proj) => {
             loadProject(proj, projectsContainer);
         });
+
+        const announcement = document.getElementById("announcement-box");
+        announcement.textContent = "Data is loaded from Remote Storage!"
+    
     }catch (error) {
         console.error("Fetching remote project data: Failed - ", error);
     }
 
-
 });
 
-
-document.addEventListener("DOMContentLoaded", async () => {
-    if (!localStorage.getItem("projects")) {
-        try {
-            const response = await fetch("project-info.json");
-            const projectData = await response.json();
-            localStorage.setItem("projects", JSON.stringify(projectData));
-            location.reload();  // Reload just once, on first load
-        } catch (error) {
-            console.error("Error loading project data:", error);
-        }
-    }
+window.addEventListener("beforeunload", () => {
+    localStorage.removeItem("projects");
 });
-
 
 
 

@@ -30,6 +30,7 @@
                 flex-direction: row;
                 max-width: 500px 
             }
+
             .data-button{
                 padding: auto;
                 border: 1px solid skyblue;
@@ -38,16 +39,19 @@
                 padding: 5px 0px;
                 font-size: large;                
             }
-            
+
+            #announcement-box{
+                border: 1px solid navy;
+                padding: 5px;
+                max-width: 500px;
+                text-align: center;
+            }
             @media screen and (max-width: 450px) {
                 main{
                     margin-top: 75px;
                 }
                 main *{
                     width: 85dvw;
-                }
-                hgroup h2{
-                    font-size: large;
                 }
             }
         </style>
@@ -96,6 +100,13 @@
             <div class="data-options">
                 <button class="data-button" id="local-storage">Localstorage Data</button>
                 <button class="data-button" id="remote-storage">Remote Data</button>
+            </div>
+            <p id="announcement-box" class="announcement-box">
+                Data is being loaded from local storage or remote server.
+                <br> 
+                Please choose one of two buttons above to load data!
+            </p>
+            <div id="projects-container">
             </div>
             <script>
                 const theme_toggle_button = document.getElementById("theme");
