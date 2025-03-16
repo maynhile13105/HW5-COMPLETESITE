@@ -36,7 +36,11 @@ body{
     font-size: large;
     overflow-y: scroll;
     color: var(--font-color);
-    
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+::-webkit-scrollbar {
+    display: none; /* Chrome, Safari */
 }
 header h1{
     font-size: 45px;

@@ -6,7 +6,7 @@
 }
 
 header{
-    height: 150px;
+    height: fit-content;
     display: flex;
     flex-direction: column;
 }
@@ -14,7 +14,7 @@ main{
     display: grid;
     justify-content: space-evenly;
     grid-template-columns: auto auto auto;
-    padding-bottom: 10px;
+    font-size: large;
 }
 section{
     border: 1px solid yellow;
@@ -22,14 +22,14 @@ section{
     background-color: #fdebcc;
     width: var(--section-width, 26.5dvw);
     height: var(--section-height, 32.7dvh);
-    padding: 5px;
+    padding: 0px 5px 5px 5px;
 }
 
 .column:nth-child(2) section:nth-child(1) p{
     padding: 0px 20px;
 }
 .column section:nth-child(2){
-    height: calc(var(--section-height, 32.7dvh) / 2);
+    height: calc(var(--section-height, 32.7dvh) / 1.75);
 }
 
 .column{
@@ -39,22 +39,17 @@ section{
     row-gap: 20px;
     align-items: center;
 }
-figure{
-    margin-top: -2dvh;
-}
-figure img{
-    width: calc(var(--section-width, 26dvw) - 100px);
+
+#avatar{
+    width: calc(var(--section-width, 26dvw)/1.5);
     height: auto;
     border-radius: 50px;
-    margin-top: -2dvw;
 }
-figcaption{
+#name{
     font-family: 'designed-font', sans-serif, Arial;
-    font-size: xx-large;
+    font-size: 45px;
     font-weight: bolder;
-    margin-top: -2.6dvw;
-}
-figure h2{
+    margin-top: -0.5dvw;
     color: color(from rgb(255, 106, 0) srgb r g b / 0.9);
     text-shadow: 0 0 10px rgb(250, 244, 132),
                  0 0 15px rgb(224, 249, 83),
@@ -63,19 +58,24 @@ figure h2{
 h2:has(+ *){
     color: orange;
     text-decoration: underline color(from rgb(255, 115, 0) srgb r g b / 0.7);
-
 }
 @font-face {
     font-family: designed-font;
     src: url(/font/QEBEV.ttf) ;
     font-display: swap;
 }
-table{
-    font-size: larger;
+#information{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
 }
+
 th{
     text-align: right;
     padding: 0px 10px;
+    font-weight: bold;
 }
 td{
     text-align: left;
@@ -107,6 +107,7 @@ td{
 .skill-ratings li  p{
     width: 130px;
     text-align: center;
+    margin-top: -5px;
 }
 .rating-stars{
     display: flex;
@@ -127,19 +128,17 @@ td{
 
 @media screen and (max-width: 2000px){
     :root{
-        --section-height: 33dvh;
-        --section-width: 25dvw;
+        --section-width: calc(100dvw / 3.5);
+        --section-height: calc((100dvh - var(--header-height))/1.75 );
     }
-    figure img{
-        width: calc(var(--section-width) - 50px);
-    }
+
 }
 @media screen and (max-width: 1500px){
 
     .skill-ratings li{
         margin-left: -20px;
     }
-    figure img{
+    #avatar{
         width: var(--section-width);
     }
    
@@ -147,33 +146,33 @@ td{
 @media screen and (max-width: 1400px){
 
     :root{
-        --section-height: 37.5dvh;
+        --section-height: calc((100dvh - var(--header-height))/2.5);
+        --section-width: calc(100dvw / 3.5);
     }
     .skill-ratings li{
         margin-left: -20px;
     }
-    figure img{
-        height: var(--section-width);
+    #avatar{
+        width: calc(var(--section-width, 28.57dvw)/1.25);
     }
-
    
 }
 
 @media screen and (max-width: 1200px){
     :root{
-        --aside-width: 100dpx;
         --section-width: 50dvw;
         --section-height: fit-content;
-    }
-    header h1{
-        margin-left: var(--aside-width, 100px);
     }
     table, p, #personality-container{
         font-size: large;
     }
-    figure img{
+    #avatar{
         width: var(--section-width, 100px)
     }  
+    #name{
+        font-size: 55px;
+        margin: 0;
+    }
     main{
         display: flex;
         flex-direction: column;
@@ -205,7 +204,6 @@ td{
 
 @media screen and (max-width: 700px){
     :root{
-        --aside-width: 50px;
         --section-width: 250px;
         --section-height: fit-content;
     }
@@ -216,12 +214,10 @@ td{
         font-size: medium;
     }
     
-    figcaption{
+    #name{
         font-size: x-large;
     }
-    aside{
-        margin-left: -8px;
-    }
+
     nav{
         font-size: x-small;
     }
@@ -234,7 +230,6 @@ td{
 }
 @media screen and (max-width: 400px){
     :root{
-        --aside-width: 50px;
         --section-width: 200px;
         --section-height: fit-content;
     } 
@@ -244,7 +239,7 @@ td{
     table, p, #personality-container{
         font-size: medium;
     }
-    figcaption{
+    #name{
         font-size: x-large;
     }
 
@@ -253,3 +248,4 @@ td{
     } 
 
 }
+
