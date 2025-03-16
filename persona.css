@@ -1,12 +1,12 @@
 :root {
-    --header-height: 150px;
+    --header-height: 185px;
     --section-width: calc(100dvw / 5.5);
     --section-height: calc((100dvh - var(--header-height)) / 2.75);
     --grid-column-width: calc(var(--section-width) + 15px)
 }
 
 header{
-    height: fit-content;
+    height: var(--header-height);
     display: flex;
     flex-direction: column;
 }
@@ -14,7 +14,7 @@ main{
     display: grid;
     justify-content: space-evenly;
     grid-template-columns: auto auto auto;
-    font-size: large;
+    font-size: 18px;
 }
 section{
     border: 1px solid yellow;
@@ -23,6 +23,8 @@ section{
     width: var(--section-width, 26.5dvw);
     height: var(--section-height, 32.7dvh);
     padding: 0px 5px 5px 5px;
+    max-height: calc((650px - var(--header-height)) * 3 / 4);
+    min-height: calc((650px - var(--header-height)) * 3 / 4);
 }
 
 .column:nth-child(2) section:nth-child(1) p{
@@ -30,6 +32,8 @@ section{
 }
 .column section:nth-child(2){
     height: calc(var(--section-height, 32.7dvh) / 1.75);
+    max-height: calc(((650px - var(--header-height)) * 3 / 4)/1.75);
+        min-height: calc(((650px - var(--header-height)) * 3 / 4)/1.75);
 }
 
 .column{
@@ -128,10 +132,9 @@ td{
 
 @media screen and (max-width: 2000px){
     :root{
-        --section-width: calc(100dvw / 3.5);
-        --section-height: calc((100dvh - var(--header-height))/1.75 );
+        --section-width: 25dvw;
+        --section-height: calc((100dvh - var(--header-height))/4*3 );
     }
-
 }
 @media screen and (max-width: 1500px){
 
@@ -139,21 +142,20 @@ td{
         margin-left: -20px;
     }
     #avatar{
-        width: var(--section-width);
+        width: calc(var(--section-width) * 0.9);
     }
    
 }
 @media screen and (max-width: 1400px){
 
     :root{
-        --section-height: calc((100dvh - var(--header-height))/2.5);
         --section-width: calc(100dvw / 3.5);
     }
     .skill-ratings li{
         margin-left: -20px;
     }
     #avatar{
-        width: calc(var(--section-width, 28.57dvw)/1.25);
+        width: calc(0.75 * var(--section-width, 28.57dvw));
     }
    
 }
@@ -179,7 +181,13 @@ td{
         row-gap: 10px;
     }
     section{
-        font-size: larger;
+        font-size: x-large;
+        max-height: max-content;
+        min-height: fit-content;
+    }
+    .column section:nth-child(2){
+        max-height: none;
+        min-height: fit-content;
     }
     #personality-container{
         display: flex;
@@ -190,7 +198,6 @@ td{
         display: flex;
         flex-direction: column;
         text-align: center;
-        margin-left: -10px;
     }
     .skill-ratings li p{
         margin-left: 0px;
@@ -230,7 +237,7 @@ td{
 }
 @media screen and (max-width: 400px){
     :root{
-        --section-width: 200px;
+        --section-width: 75dvw;
         --section-height: fit-content;
     } 
     h2{
@@ -242,10 +249,5 @@ td{
     #name{
         font-size: x-large;
     }
-
-    main{
-        margin-left: 10px ;        
-    } 
-
 }
 
