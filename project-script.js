@@ -68,7 +68,6 @@ document.getElementById("local-storage").addEventListener("click", async () => {
 
     const projectsContainer = document.querySelector("main");
 
-    // Check if data exists in localStorage
     let localData = localStorage.getItem("projects");
 
     if (!localData) {
@@ -84,10 +83,28 @@ document.getElementById("local-storage").addEventListener("click", async () => {
         localData = JSON.parse(localData); // Parse data from localStorage
     }
 
-    // Populate project cards
     localData["project-cards"].forEach((proj) => {
         loadProject(proj, projectsContainer);
     });
+});
+
+document.getElementById("remote-storage").addEventListener("click", async () => {
+
+    const projectsContainer = document.querySelector("main");
+    projectsContainer.innerHTML = "";
+    try{
+        const response = await fetch("https://my-json-server.typicode.com/maynhile13105/HW5-COMPLETESITE/db");
+        const remoteData = await response.json();
+
+        // Populate project cards
+        remoteData["project-cards"].forEach((proj) => {
+            loadProject(proj, projectsContainer);
+        });
+    }catch (error) {
+        console.error("Fetching remote project data: Failed - ", error);
+    }
+
+
 });
 
 
@@ -103,6 +120,8 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 });
+
+
 
 
 
