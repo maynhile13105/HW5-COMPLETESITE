@@ -10,7 +10,7 @@
             header{
                 display: flex;
                 flex-direction: column;
-                height: 150px;
+                height: fit-content;
             }
             nav{
                 display: flex;
@@ -24,10 +24,21 @@
                 width: 50dvw;
                 justify-content: center;
             }
-            hgroup h2{
-                color: navy;
-                font-weight: bolder;
+
+            .data-options{
+                display: flex;
+                flex-direction: row;
+                max-width: 500px 
             }
+            .data-button{
+                padding: auto;
+                border: 1px solid skyblue;
+                border-radius: 10px;
+                background-color: antiquewhite;
+                padding: 5px 0px;
+                font-size: large;                
+            }
+            
             @media screen and (max-width: 450px) {
                 main{
                     margin-top: 75px;
@@ -82,105 +93,10 @@
             <h1>PROJECTS</h1>
         </header>
         <main>
-            <section>
-                <hgroup>
-                    <h2>Web Application: Triton Cook</h2>
-                    <p>Team Project</p>
-                </hgroup>
-                <details>
-                    <summary><b>Summary</b></summary>
-                    <dl>
-                        <dt>Description:</dt>
-                        <dd>A web platform that allows UCSD students to find, share,
-                            and discuss recipes depending on their budget, time constraints, 
-                            and goals.</dd>
-                        <dt>Language:</dt>
-                        <dd>
-                            <dfn><abbr title="HyperText Markup Language">HTML</abbr></dfn>,
-                            <dfn><abbr title="Cascading Style Sheets">CSS</abbr></dfn>, 
-                            <i>Typescript</i>
-                        </dd>
-                        <dt>Reference Code:</dt>
-                        <dd><a href="https://github.com/maynhile13105/CSE110-Project-TritonCook.git">https://github.com/maynhile13105/CSE110-Project-TritonCook.git</a></dd>
-                      </dl>
-                </details>
-                <video width="500" height="350" controls>
-                    <source src="/TritonCook-Demo.mp4" type="video/mp4">
-                </video>
-            </section>
-            <hr>
-            <section>
-                <hgroup>
-                    <h2>Machine Learning: Predict the car accident</h2>
-                    <p>Team Project</p>
-                </hgroup>
-                <details>
-                    <summary><b>Summary</b></summary>
-                    <dl>
-                        <dt>Description:</dt>
-                        <dd>Build three different models to predict the likelihood of personal injury based on accident details.</dd>
-                        <dt>Language:</dt>
-                        <dd>Python</dd>
-                        <dt>Reference Code:</dt>
-                        <dd><a href="https://github.com/devPach4545/CSE_151A.git">https://github.com/devPach4545/CSE_151A.git</a></dd>
-                    </dl>
-                </details>
-            </section>
-            <hr>
-            <section>
-                <hgroup>
-                    <h2>AI: Probabiblistic</h2>
-                    <p>Team Project</p>
-                </hgroup>
-                <details>
-                    <summary><b>Summary</b></summary>
-                    <p>This project will be available soon!</p>
-                </details>
-            </section>
-            <hr>
-            <section>
-                <hgroup>
-                    <h2>NFA-to-DFA Converter</h2>
-                    <p>Individual Project</p>
-                </hgroup>
-                <details>
-                    <summary><b>Summary</b></summary>
-                    <dl>
-                        <dt>Description:</dt>
-                        <dd>Build a Converter so that it  takes as input a representation of an NFA over an alphabet and outputs a representation of a DFA over this alphabet that recognizes the same language.</dd>
-                        <dt>Language:</dt>
-                        <dd>Python</dd>
-                        <dt>Reference Code:</dt>
-                        <dd><a href="https://colab.research.google.com/drive/147gMKBNlvKAFUPJBCjj3M-ZCRcL1zp_6?usp=sharing">Click me</a></dd>
-                    </dl>
-                </details>
-                <dl>
-                    <dt><b>Demo</b></dt>
-                    <dd>Will be available soon!</dd>
-                </dl>
-            </section>
-            <hr>
-            <section>
-                <hgroup>
-                    <h2>Encoder and Decoder</h2>
-                    <p>Individual Project</p>
-                </hgroup>
-                <details>
-                    <summary><b>Summary</b></summary>
-                    <dl>
-                        <dt>Description:</dt>
-                        <dd>Encode and Decode a file</dd>
-                        <dt>Language:</dt>
-                        <dd>C++</dd>
-                        <dt>Reference Code:</dt>
-                        <dd>Private code due to Academic Policy. For more details, ask Uyen via <a href="mailto:maynhile13105@gmail.com">maynhile13105@gmail.com</a></dd>
-                    </dl>
-                </details>
-                <dl>
-                    <dt><b>Demo</b></dt>
-                    <dd>Will be available soon!</dd>
-                </dl>
-            </section>
+            <div class="data-options">
+                <button class="data-button" id="local-storage">Localstorage Data</button>
+                <button class="data-button" id="remote-storage">Remote Data</button>
+            </div>
             <script>
                 const theme_toggle_button = document.getElementById("theme");
                 const theme_label = document.getElementById("theme-label");
@@ -206,8 +122,8 @@
                         theme_icon.setAttribute("alt", "day-icon");
                     }
                 })
-                
             </script>
+            <script src="project-script.js"></script>
         </main>
         <footer>
             <address><b>Give feedbacks via <a href="mailto:maynhile13195@gmail.com">maynhile13105@gmail.com</a></b></address>
