@@ -91,7 +91,7 @@
                 </a>
                 <button type="button" class="theme" id="theme">
                     <img src="/images/day-icon.svg" alt="day-icon" id="theme-icon">
-                    <i id="theme-label">Daylight</i>
+                    <i id="theme-label"></i>
                 </button>
             </nav>
             <h1>PROJECTS</h1>
@@ -108,33 +108,8 @@
             </p>
             <div id="projects-container">
             </div>
-            <script>
-                const theme_toggle_button = document.getElementById("theme");
-                const theme_label = document.getElementById("theme-label");
-                const theme_icon = document.getElementById("theme-icon");
-                const current_theme = localStorage.getItem("theme");
-                document.documentElement.setAttribute('theme', current_theme);
-                theme_label.textContent = current_theme === "Daylight"? "Daylight" : "Nightlight";
-
-                theme_toggle_button.addEventListener("click", (event) => {
-                    const theme = document.documentElement.getAttribute('theme');
-                    if(theme === "Daylight"){
-                        document.documentElement.setAttribute("theme", "Nightlight");
-                        localStorage.setItem("theme", "Nightlight");
-                        theme_label.textContent= "Nightlight";
-                        theme_icon.setAttribute("src", "/images/night-icon.svg");
-                        theme_icon.setAttribute("alt", "night-icon");
-
-                    } else {
-                        document.documentElement.setAttribute("theme", "Daylight");
-                        localStorage.setItem("theme", "Daylight");
-                        theme_label.textContent= "Daylight";
-                        theme_icon.setAttribute("src", "/images/day-icon.svg");
-                        theme_icon.setAttribute("alt", "day-icon");
-                    }
-                })
-            </script>
-            <script src="project-script.js"></script>
+            <script src="scripts/theme-script.js"></script>
+            <script src="scripts/project-script.js"></script>
         </main>
         <footer>
             <address><b>Give feedbacks via <a href="mailto:maynhile13195@gmail.com">maynhile13105@gmail.com</a></b></address>

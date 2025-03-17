@@ -19,7 +19,7 @@ main{
 section{
     border: 1px solid yellow;
     border-radius: 10px;
-    background-color: #fdebcc;
+    background-color: var(--persona-section-bg);
     width: var(--section-width, 26.5dvw);
     height: var(--section-height, 32.7dvh);
     padding: 0px 5px 5px 5px;

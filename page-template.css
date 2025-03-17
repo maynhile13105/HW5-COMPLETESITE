@@ -11,6 +11,8 @@
     --input-background-color: white;
     --tip-color: navy;
     --nav-background: transparent;
+    --project-bg: #fdebcc;
+    --persona-section-bg: #fdebcc;
 }
 [theme='Nightlight']{
     --linear-background: linear-gradient(180deg, #062651, #073f89);
@@ -19,6 +21,9 @@
     --input-background-color: lightgrey;
     --tip-color: yellow;
     --nav-background: lightsteelblue;
+    --project-bg: lightsteelblue;
+    --persona-section-bg: lightsteelblue;
+
 }
 
 
@@ -38,6 +43,11 @@ body{
     color: var(--font-color);
     scrollbar-width: none; /* Firefox */
     -ms-overflow-style: none; /* IE and Edge */
+}
+button{
+    font-family: Copperplate, Papyrus, fantasy;
+    font-weight: bold;
+    font-size: large;
 }
 ::-webkit-scrollbar {
     display: none; /* Chrome, Safari */
@@ -69,7 +79,7 @@ footer {
     border-top: 1px solid navy;
 }
 
-a, .theme{
+a, .theme, nav button{
     text-decoration: none;
     color: var(--font-color);
 }
@@ -113,17 +123,9 @@ button.theme{
     footer{
         font-size: small;
     }
-    aside nav{
-        display: flex;
-        flex-direction: column;
-    }
 }
 
 @media screen and (max-height: 420px){
-    aside{
-        margin-top: -15dvh;
-        width: 5dvh;
-    }
     nav a img{
         width: 40px;
     }

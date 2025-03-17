@@ -10,7 +10,7 @@ class ProjectComponent extends HTMLElement{
                     border-radius: 10px;
                     padding: 15px;
                     margin: 10px;
-                    background: #fdebcc;
+                    background: var(--project-bg);
                     box-shadow: 2px 2px 10px yellow;
                     display: flex;
                     flex-direction: column
