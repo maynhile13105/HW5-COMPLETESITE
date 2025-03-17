@@ -21,7 +21,6 @@
             }
             nav{
                 width: 55dvw;
-                font-size: x-large;
                 border-radius: 15px;
                 height: fit-content;
             }
@@ -29,8 +28,9 @@
                 padding: 10px;
                 border-radius: 15px;
                 font-weight: bold;
-                color: darkblue;
+                font-size: x-large;
             }
+            
             
             nav:hover a,
             nav:hover button{
@@ -65,6 +65,8 @@
             @media screen and (max-width: 750px){
                 nav{
                     margin-top: -3dvw;
+                }
+                nav button, nav a{
                     font-size: medium;
                 }
                 #logo{
@@ -77,7 +79,7 @@
                     width: 65dvw;
                     margin-top: 0px;
                 }
-                nav{
+                nav a, nav button{
                     font-size: medium;
                 }
             }      
