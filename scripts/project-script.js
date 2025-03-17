@@ -34,7 +34,12 @@ class ProjectComponent extends HTMLElement{
                 <p><b>Description: </b> <br><span id="description"></span></p>
                 <a id="link" target="_blank">Click to view details!</a>
                 <picture>
-                    <img id="project-img" alt="">
+                    <source
+                        id="proj-pic-source"
+                        srcset=""
+                        media="(orientation: portrait)" 
+                    />
+                    <img id="proj-pic-img" alt="">
                 </picture>
             </div>
         `;
@@ -46,8 +51,9 @@ class ProjectComponent extends HTMLElement{
         this.shadowRoot.querySelector("#language").textContent = this.getAttribute("language");
         this.shadowRoot.querySelector("#description").textContent = this.getAttribute("description");
         this.shadowRoot.querySelector("#link").href = this.getAttribute("link");
-        this.shadowRoot.querySelector("#project-img").src = this.getAttribute("result");
-        this.shadowRoot.querySelector("#project-img").alt = this.getAttribute("title") + " image";
+        this.shadowRoot.querySelector("#proj-pic-source").srcset = this.getAttribute("result2");
+        this.shadowRoot.querySelector("#proj-pic-img").src = this.getAttribute("result1");
+        this.shadowRoot.querySelector("#proj-pic-img").alt = this.getAttribute("title") + " image";
     }
 }
 
@@ -60,7 +66,8 @@ function loadProject(data, projectsContainer){
     projCard.setAttribute("language", data.language);
     projCard.setAttribute("description", data.description);
     projCard.setAttribute("link", data.link);
-    projCard.setAttribute("result", data.result);
+    projCard.setAttribute("result1", data.result1);
+    projCard.setAttribute("result2", data.result2)
 
     projectsContainer.appendChild(projCard);
 
@@ -75,7 +82,7 @@ document.getElementById("local-storage").addEventListener("click", async () => {
 
     if (!localData) {
         try {
-            const response = await fetch("project-info.json"); 
+            const response = await fetch("/json/project-info.json"); 
             localData = await response.json();
             localStorage.setItem("projects", JSON.stringify(localData)); 
         } catch (error) {
@@ -100,7 +107,7 @@ document.getElementById("remote-storage").addEventListener("click", async () => 
     const projectsContainer = document.getElementById("projects-container");
     projectsContainer.innerHTML = "";
     try{
-        const response = await fetch("https://my-json-server.typicode.com/maynhile13105/HW5-COMPLETESITE/db");
+        const response = await fetch("https://my-json-server.typicode.com/maynhile13105/HW5-COMPLETESITE/json/db");
         const remoteData = await response.json();
 
         // Populate project cards
