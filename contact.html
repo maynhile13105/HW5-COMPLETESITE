@@ -250,6 +250,12 @@
                 <hgroup>
                     <h2>Leave your information and message here!</h2>
                     <p>Uyen will contact you back in 24 hours!</p>
+                    <p style="color: red;
+                                border: red 1px solid;
+                                display: flex;
+                                justify-content: center;"> Sorry! This method is unavailable at the moment!
+                        <br> Uyen will update it soon!
+                    </p>
                 </hgroup>
                 <form method="POST" action="https://httpbin.org/post" id="mess-form">
                     <fieldset>
@@ -316,7 +322,7 @@
                             <p class="info-mess" id="info-email"></p>
                             <p class="info-mess" id="info-cmt"></p>
                         </output>
-                        <button type="submit">Send</button> 
+                        <button type="submit" disabled>Send</button> 
                         <span class="note" >
                             <p>Notes: <strong class="indicator">*</strong> - required Field</p>
                         </span>
